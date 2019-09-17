@@ -55,7 +55,7 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives/index.html">归档</a></li>
 	        
 			</ul>
 		</nav>
@@ -131,7 +131,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 50%"><a href="/archives/index.html">归档</a></li>
 		        
 				</ul>
 			</nav>
@@ -148,30 +148,35 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2019看雪CTF-Q1-第六题-Repwn详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/17/hello-world/">Hello World</a>
+      <a class="article-title" href="/2019/03/26/2019看雪CTF-Q1-第六题-Repwn详解/">2019看雪CTF-Q1-第六题 Repwn详解</a>
     </h1>
   
 
         
         
-<a href="/2019/09/17/hello-world/" class="archive-article-date">
-  	<time datetime="2019-09-17T09:01:46.342Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
+<a href="/2019/03/26/2019看雪CTF-Q1-第六题-Repwn详解/" class="archive-article-date">
+  	<time datetime="2019-03-26T12:34:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+        <blockquote>
+<p>这题花了我今天所有的空闲时间（大概五个多小时），所以有必要记录一下自己的解题过程:-)</p>
+<p><a href="https://github.com/L1B0/CTF/tree/master/2019%E7%9C%8B%E9%9B%AACTF-Q1/Repwn" target="_blank" rel="noopener">题目和脚本</a></p>
+</blockquote>
+<h2 id="0x01-第一关（re-pwn-）"><a href="#0x01-第一关（re-pwn-）" class="headerlink" title="0x01 第一关（re+pwn???）"></a>0x01 第一关（re+pwn???）</h2><p>第一个关键函数sub_4014C0伪代码如下</p>
+<p><img src="https://s2.ax1x.com/2019/03/14/AATodg.md.png" alt="1"></p>
         
-          <a class="article-more-a" href="/2019/09/17/hello-world/#more">more >></a>
+          <a class="article-more-a" href="/2019/03/26/2019看雪CTF-Q1-第六题-Repwn详解/#more">more >></a>
         
       
       
@@ -185,82 +190,28 @@
     <div class="article-info article-info-index">
       
       
-      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DES</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/17/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-    <article id="post-Hello-World" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/03/Hello-World/">Hello-World</a>
-    </h1>
-  
-
-        
-        
-<a href="/2018/07/03/Hello-World/" class="archive-article-date">
-  	<time datetime="2018-07-03T11:51:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>Welcome to L1B0’s blog!!!</p>
-<p>2018.7.3</p>
-
-      
-      
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
       
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/l1b0-s-blog//" class="article-tag-list-link color2">l1b0's blog</a>
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
         		</li>
       		
 		</ul>
@@ -269,7 +220,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/03/Hello-World/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/03/26/2019看雪CTF-Q1-第六题-Repwn详解/">展开全文 >></a>
         </p>
       
 
@@ -298,6 +249,905 @@
 
 
   
+    <article id="post-TokyoWesterns-CTF-2018-re-dec-dec-dec-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/08/TokyoWesterns-CTF-2018-re-dec-dec-dec-wp/">TokyoWesterns_CTF_2018-re_dec_dec_dec-wp</a>
+    </h1>
+  
+
+        
+        
+<a href="/2018/09/08/TokyoWesterns-CTF-2018-re-dec-dec-dec-wp/" class="archive-article-date">
+  	<time datetime="2018-09-08T12:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>最近在搞小学期的项目，没空写wp，这题是上周搞出来的，这里简单记录一下，可能有些细节忘了。。。</p>
+<p>==&gt;<a href="https://github.com/L1B0/CTF/tree/master/TokyoWesterns%20CTF_4th_2018/re_dec_dec_dec" target="_blank" rel="noopener">题目地址</a>&lt;==</p>
+</blockquote>
+<h2 id="0x00-简单分析"><a href="#0x00-简单分析" class="headerlink" title="0x00 简单分析"></a>0x00 简单分析</h2><p>程序是64位ELF，先拖进IDA看下逻辑。</p>
+        
+          <a class="article-more-a" href="/2018/09/08/TokyoWesterns-CTF-2018-re-dec-dec-dec-wp/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/08/TokyoWesterns-CTF-2018-re-dec-dec-dec-wp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-noxCTF-2018-re-GuessTheString-wp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/08/noxCTF-2018-re-GuessTheString-wp/">noxCTF_2018-re_GuessTheString-wp</a>
+    </h1>
+  
+
+        
+        
+<a href="/2018/09/08/noxCTF-2018-re-GuessTheString-wp/" class="archive-article-date">
+  	<time datetime="2018-09-08T12:31:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>==&gt;<a href="https://github.com/L1B0/CTF/tree/master/noxCTF_2018" target="_blank" rel="noopener">题目地址</a>&lt;==</p>
+</blockquote>
+<h2 id="0x00-简单分析"><a href="#0x00-简单分析" class="headerlink" title="0x00 简单分析"></a>0x00 简单分析</h2><p>一道简单re，但是很坑啊。</p>
+<p>用IDA直接看代码，逻辑如下。</p>
+<p><img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fv2dpw6bmjj311p0eun0j.jpg" alt="img"></p>
+        
+          <a class="article-more-a" href="/2018/09/08/noxCTF-2018-re-GuessTheString-wp/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/08/noxCTF-2018-re-GuessTheString-wp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-hackme-inndy-crypto-mutilayer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/19/hackme-inndy-crypto-mutilayer/">hackme-inndy-crypto-mutilayer</a>
+    </h1>
+  
+
+        
+        
+<a href="/2018/08/19/hackme-inndy-crypto-mutilayer/" class="archive-article-date">
+  	<time datetime="2018-08-19T12:29:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Points: 150</p>
+<p>Solves: 6</p>
+</blockquote>
+<p>一道多重加密的crypto，很好玩。</p>
+        
+          <a class="article-more-a" href="/2018/08/19/hackme-inndy-crypto-mutilayer/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Crypto</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/19/hackme-inndy-crypto-mutilayer/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-安恒杯-7月月赛-Reverse-Youngter-drive" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/18/安恒杯-7月月赛-Reverse-Youngter-drive/">安恒杯-7月月赛-Reverse-Youngter-drive</a>
+    </h1>
+  
+
+        
+        
+<a href="/2018/08/18/安恒杯-7月月赛-Reverse-Youngter-drive/" class="archive-article-date">
+  	<time datetime="2018-08-18T12:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>我先吐槽一句，这题真是巨坑==</p>
+</blockquote>
+<h3 id="Step1-脱UPX"><a href="#Step1-脱UPX" class="headerlink" title="Step1: 脱UPX"></a>Step1: 脱UPX</h3><p>首先file一下，发现有upx壳，这是第一关。</p>
+<p>二话不说<code>upx -d Youngter-drive.exe</code>脱掉。</p>
+<p><img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fubbwetbapj30s602mmxx.jpg" alt="img"></p>
+        
+          <a class="article-more-a" href="/2018/08/18/安恒杯-7月月赛-Reverse-Youngter-drive/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">upx</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">fix-f5</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/18/安恒杯-7月月赛-Reverse-Youngter-drive/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Pwnable-Kr-Rookiss-fsb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/15/Pwnable-Kr-Rookiss-fsb/">Pwnable-Kr-Rookiss-fsb</a>
+    </h1>
+  
+
+        
+        
+<a href="/2018/08/15/Pwnable-Kr-Rookiss-fsb/" class="archive-article-date">
+  	<time datetime="2018-08-15T12:25:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><blockquote>
+<p>Isn’t FSB almost obsolete in computer security?<br>Anyway, have fun with it :)</p>
+<p>ssh <a href="mailto:fsb@pwnable.kr" target="_blank" rel="noopener">fsb@pwnable.kr</a> -p2222 (pw:guest)</p>
+<p>On Aug 15,2018</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2018/08/15/Pwnable-Kr-Rookiss-fsb/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Format-String-Bug</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/15/Pwnable-Kr-Rookiss-fsb/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-TJCTF-2018-bin-Writeup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/13/TJCTF-2018-bin-Writeup/">TJCTF-2018-bin-Writeup</a>
+    </h1>
+  
+
+        
+        
+<a href="/2018/08/13/TJCTF-2018-bin-Writeup/" class="archive-article-date">
+  	<time datetime="2018-08-13T12:23:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>Unsolved: pwn-Online-Banking</p>
+</blockquote>
+<h2 id="Reverse"><a href="#Reverse" class="headerlink" title="Reverse"></a>Reverse</h2><h3 id="Validator-points-30"><a href="#Validator-points-30" class="headerlink" title="Validator(points: 30)"></a>Validator(points: 30)</h3><p>首先file看一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">▶ file flagcheck </span><br><span class="line">flagcheck: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=89bdc886ab26b531450aa6ecb741b66a060b7605, not stripped</span><br></pre></td></tr></table></figure>
+
+<p>用ida看伪代码会发现是明文比较，如下图。</p>
+        
+          <a class="article-more-a" href="/2018/08/13/TJCTF-2018-bin-Writeup/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Pwn</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/13/TJCTF-2018-bin-Writeup/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Format-String-Bug-Training" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/08/Format-String-Bug-Training/">Format-String-Bug-Training</a>
+    </h1>
+  
+
+        
+        
+<a href="/2018/08/08/Format-String-Bug-Training/" class="archive-article-date">
+  	<time datetime="2018-08-08T12:22:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>题目地址：<a href="https://github.com/scwuaptx/HITCON-Training" target="_blank" rel="noopener">https://github.com/scwuaptx/HITCON-Training</a></p>
+</blockquote>
+<h3 id="HITCON-Training-lab7"><a href="#HITCON-Training-lab7" class="headerlink" title="HITCON-Training-lab7"></a>HITCON-Training-lab7</h3><p>首先<code>checksec</code>一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">▶ checksec crack </span><br><span class="line">[*] &apos;HITCON-Training-master/LAB/lab7/crack&apos;</span><br><span class="line">    Arch:     i386-32-little</span><br><span class="line">    RELRO:    Partial RELRO</span><br><span class="line">    Stack:    Canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      No PIE (0x8048000)</span><br></pre></td></tr></table></figure>
+
+<p>开了栈保护，NX保护(shellcode不可执行)，但没开PIE(地址不随机化)</p>
+<p>用IDA看下伪代码可以发现<code>printf(&amp;buf)</code>，典型的<code>Format String Bug</code></p>
+<p>分析代码发现只要知道了随机化的password即可得到flag，所以这里只用实现<strong>任意地址的读</strong>，当然也有其他方法。</p>
+        
+          <a class="article-more-a" href="/2018/08/08/Format-String-Bug-Training/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Format-String-Bug</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/08/Format-String-Bug-Training/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Format-String-Bug-Easy-examples" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/06/Format-String-Bug-Easy-examples/">Format-String-Bug-Easy-examples</a>
+    </h1>
+  
+
+        
+        
+<a href="/2018/08/06/Format-String-Bug-Easy-examples/" class="archive-article-date">
+  	<time datetime="2018-08-06T12:20:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>References:</p>
+<ul>
+<li><p><a href="https://blog.csdn.net/qq_18661257/article/details/54694748" target="_blank" rel="noopener">关于GOT表和PLT表的作用</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/097e211cd9eb" target="_blank" rel="noopener">自己实现fmtstr_payload</a></p>
+</li>
+</ul>
+<h3 id="初探"><a href="#初探" class="headerlink" title="初探"></a>初探</h3><blockquote>
+<p>自己写了个最简单fsb的example，以此来入个门</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2018/08/06/Format-String-Bug-Easy-examples/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Format-String-Bug</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/06/Format-String-Bug-Easy-examples/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+    <article id="post-Pwnable-Kr-Rookiss-dragon" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/01/Pwnable-Kr-Rookiss-dragon/">Pwnable-Kr-Rookiss-dragon</a>
+    </h1>
+  
+
+        
+        
+<a href="/2018/08/01/Pwnable-Kr-Rookiss-dragon/" class="archive-article-date">
+  	<time datetime="2018-08-01T12:18:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="dragon"><a href="#dragon" class="headerlink" title="dragon"></a>dragon</h3><blockquote>
+<p>I made a RPG game for my little brother.<br>But to trick him, I made it impossible to win.<br>I hope he doesn’t get too angry with me :P!</p>
+<p>Author : rookiss<br>Download : <a href="http://pwnable.kr/bin/dragon" target="_blank" rel="noopener">http://pwnable.kr/bin/dragon</a></p>
+<p>Running at : nc pwnable.kr 9004</p>
+<p>On Aug 1,2018</p>
+</blockquote>
+<p>UAF的一道「简单题」，但我不会。。。pwn做的太少了</p>
+        
+          <a class="article-more-a" href="/2018/08/01/Pwnable-Kr-Rookiss-dragon/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Pwnable-Kr</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Pwn</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/01/Pwnable-Kr-Rookiss-dragon/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 
 
@@ -400,6 +1250,54 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Reverse</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DES</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Format-String-Bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Linux-IDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Pwnable-Kr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Pwn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Crypto</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Misc</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时序攻击</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">upx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">fix-f5</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
