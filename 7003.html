@@ -6,23 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://l1b0.fun">
-  <title>hackme-inndy-crypto-mutilayer | l1b0&#39;s blog</title>
+  <title>hackme-inndy-misc-slow | l1b0&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Points: 150 Solves: 6  一道多重加密的crypto，很好玩。">
-<meta name="keywords" content="Crypto">
+  <meta name="description" content="题目描述：OMG, It’s slow. nc hackme.inndy.tw 7708  0x00 初探这道题没有附件，只给了一个nc，连上去后如下图  可以知道flag格式为FLAG{\w+}，\w+\表示匹配字母，数字，下划线或加号，并且没有小写字母和空格，于是符合要求的字符有 1ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+_">
+<meta name="keywords" content="Misc,时序攻击">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hackme-inndy-crypto-mutilayer">
-<meta property="og:url" content="https://l1b0.fun/2018/08/19/hackme-inndy-crypto-mutilayer/index.html">
+<meta property="og:title" content="hackme-inndy-misc-slow">
+<meta property="og:url" content="https://l1b0.fun/7003.html">
 <meta property="og:site_name" content="l1b0&#39;s blog">
-<meta property="og:description" content="Points: 150 Solves: 6  一道多重加密的crypto，很好玩。">
+<meta property="og:description" content="题目描述：OMG, It’s slow. nc hackme.inndy.tw 7708  0x00 初探这道题没有附件，只给了一个nc，连上去后如下图  可以知道flag格式为FLAG{\w+}，\w+\表示匹配字母，数字，下划线或加号，并且没有小写字母和空格，于是符合要求的字符有 1ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+_">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fufa7wwo3jj30qz0j5jtk.jpg">
-<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fufb5d6xi6j30co0aj748.jpg">
-<meta property="og:updated_time" content="2019-09-17T12:30:54.636Z">
+<meta property="og:image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1ftqzhlitgfj30kp024mxc.jpg">
+<meta property="og:updated_time" content="2019-09-23T03:13:36.385Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hackme-inndy-crypto-mutilayer">
-<meta name="twitter:description" content="Points: 150 Solves: 6  一道多重加密的crypto，很好玩。">
-<meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fufa7wwo3jj30qz0j5jtk.jpg">
+<meta name="twitter:title" content="hackme-inndy-misc-slow">
+<meta name="twitter:description" content="题目描述：OMG, It’s slow. nc hackme.inndy.tw 7708  0x00 初探这道题没有附件，只给了一个nc，连上去后如下图  可以知道flag格式为FLAG{\w+}，\w+\表示匹配字母，数字，下划线或加号，并且没有小写字母和空格，于是符合要求的字符有 1ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+_">
+<meta name="twitter:image" content="http://wx1.sinaimg.cn/mw690/0060lm7Tly1ftqzhlitgfj30kp024mxc.jpg">
   
     <link rel="alternative" href="/atom.xml" title="l1b0&#39;s blog" type="application/atom+xml">
   
@@ -158,21 +157,21 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hackme-inndy-crypto-mutilayer" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-hackme-inndy-misc-slow" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hackme-inndy-crypto-mutilayer
+      hackme-inndy-misc-slow
     </h1>
   
 
         
                 <!-- 不蒜子统计 -->        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次        </span>
-<a href="/2018/08/19/hackme-inndy-crypto-mutilayer/" class="archive-article-date">
-  	<time datetime="2018-08-19T12:29:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-19</time>
+<a href="/7003.html" class="archive-article-date">
+  	<time datetime="2018-07-30T12:14:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
 </a>
         
       </header>
@@ -180,49 +179,27 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>Points: 150</p>
-<p>Solves: 6</p>
+<p>题目描述：OMG, It’s slow.</p>
+<p>nc hackme.inndy.tw 7708</p>
 </blockquote>
-<p>一道多重加密的crypto，很好玩。</p>
+<h3 id="0x00-初探"><a href="#0x00-初探" class="headerlink" title="0x00 初探"></a>0x00 初探</h3><p>这道题没有附件，只给了一个nc，连上去后如下图</p>
+<p><img src="http://wx1.sinaimg.cn/mw690/0060lm7Tly1ftqzhlitgfj30kp024mxc.jpg" alt="img"></p>
+<p>可以知道flag格式为FLAG{\w+}，\w+\表示匹配字母，数字，下划线或加号，并且没有小写字母和空格，于是符合要求的字符有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+_</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
 
-<h3 id="题目源码如下"><a href="#题目源码如下" class="headerlink" title="题目源码如下"></a>题目源码如下</h3><p>为了能在本地跑起来我做了一点改动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">import base64</span><br><span class="line">import binascii</span><br><span class="line">import collections</span><br><span class="line">import hashlib</span><br><span class="line">import os</span><br><span class="line">import random</span><br><span class="line">import string</span><br><span class="line"></span><br><span class="line">from Crypto.Util import number</span><br><span class="line"></span><br><span class="line">p = number.getPrime(1024)</span><br><span class="line">q = number.getPrime(1024)</span><br><span class="line">n = p * q</span><br><span class="line">e = number.getPrime(24)</span><br><span class="line">print(&apos;RSA(n=0x%x, e=0x%x)&apos; % (n, e))</span><br><span class="line"></span><br><span class="line">def rsa_encrypt(x):</span><br><span class="line">    v = number.bytes_to_long(x)</span><br><span class="line">    return pow(v, e, n)</span><br><span class="line"></span><br><span class="line">def xor(a, b):</span><br><span class="line">    return bytes(i ^ j for i, j in zip(a, b))</span><br><span class="line"></span><br><span class="line">flag = open(&apos;flag&apos;, &apos;rb&apos;).read()</span><br><span class="line"></span><br><span class="line">assert flag.startswith(b&apos;FLAG&#123;&apos;) and flag.endswith(b&apos;&#125;\n&apos;)</span><br><span class="line">print(hashlib.sha256(flag).hexdigest())</span><br><span class="line"></span><br><span class="line">def layer1(data):</span><br><span class="line">    data = data.decode(&apos;ascii&apos;)</span><br><span class="line"></span><br><span class="line">    s = string.ascii_uppercase</span><br><span class="line">    t = list(s)</span><br><span class="line">    random.shuffle(t)</span><br><span class="line">    t = &apos;&apos;.join(t)</span><br><span class="line"></span><br><span class="line">    print(collections.Counter(data))</span><br><span class="line"></span><br><span class="line">    return data.translate(str.maketrans(s, t))</span><br><span class="line"></span><br><span class="line">def layer2(data):</span><br><span class="line">    return bytes([ord(b) * 17 % 251 for b in data])</span><br><span class="line"></span><br><span class="line">def layer3(data):</span><br><span class="line">    output = []</span><br><span class="line">    key = number.bytes_to_long(os.urandom(128))</span><br><span class="line"></span><br><span class="line">    for i in data:</span><br><span class="line">        key = (key * 0xc8763 + 9487) % 0x10000000000000000</span><br><span class="line">        output.append((i ^ key) &amp; 0xff)</span><br><span class="line">    </span><br><span class="line">    return bytes(output)</span><br><span class="line"></span><br><span class="line">def layer4(data):</span><br><span class="line">    iv = os.urandom(256)</span><br><span class="line">    output = iv</span><br><span class="line"></span><br><span class="line">    hexencoded = binascii.hexlify(data)</span><br><span class="line">    length_target = (len(hexencoded) + 3) // 4</span><br><span class="line">    padded = hexencoded.ljust(length_target * 4, b&apos;f&apos;)</span><br><span class="line"></span><br><span class="line">    for i in range(0, len(padded), 4):</span><br><span class="line">        r = rsa_encrypt(padded[i:i+4])</span><br><span class="line">        block = binascii.unhexlify(&apos;%.512x&apos; % r)</span><br><span class="line">        output += xor(output[-256:], block)</span><br><span class="line"></span><br><span class="line">    return base64.b64encode(output)</span><br><span class="line"></span><br><span class="line">flag = layer1(flag) #tihuan</span><br><span class="line">print(&quot;layer1 -&gt; &#123;&#125;&quot;.format(flag))</span><br><span class="line">flag = layer2(flag)</span><br><span class="line">print(&quot;layer2 -&gt; &#123;&#125;&quot;.format(flag))</span><br><span class="line"></span><br><span class="line">flag = layer3(flag)</span><br><span class="line">print(&quot;layer3 -&gt; &#123;&#125;&quot;.format(flag))</span><br><span class="line"></span><br><span class="line">flag = layer4(flag)</span><br><span class="line">print(&quot;layer4 -&gt; &#123;&#125;&quot;.format(flag))</span><br><span class="line"></span><br><span class="line">print(flag.decode(&apos;ascii&apos;))</span><br></pre></td></tr></table></figure>
+<h3 id="0x01-解题过程"><a href="#0x01-解题过程" class="headerlink" title="0x01 解题过程"></a>0x01 解题过程</h3><p>了解了flag格式后，觉得字符范围这么小，应该是要逐字符爆破，但怎样才算正确呢？</p>
+<p>google之后了解到有一种叫<strong>时序攻击</strong>的手段，在密码学中是<strong>侧信道攻击</strong>的一种。原理大致是通过分析程序<strong>执行的时间</strong>来推导出正确的密码。</p>
+<p>结合题目描述(OMG, It’s slow.)来看应该是与时间有关，于是测试延迟。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#此时的输入是FLAG&#123; + &apos;now_char&apos; + &apos;&#125;&apos;,长度为7</span><br><span class="line">$ python test_slow.py      </span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = A  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = B  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = C  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = D  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = E  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = F  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = G  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = H  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = I  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = J  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = K  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = L  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = M  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = N  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = O  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = P  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = Q  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = R  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = S  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = T  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = U  now_time = 7.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = V  now_time = 17.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = W  now_time = 7.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = X  now_time = 16.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = Y  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = Z  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = 0  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = 1  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = 2  now_time = 7.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = 3  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = 4  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = 5  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = 6  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = 7  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = 8  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = 9  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = +  now_time = 6.0</span><br><span class="line">[+] Opening connection to hackme.inndy.tw on port 7708: Done</span><br><span class="line">now_char = _  now_time = 6.0</span><br></pre></td></tr></table></figure>
 
-<h3 id="layer4"><a href="#layer4" class="headerlink" title="layer4"></a>layer4</h3><p>这个函数的流程大致是先生成一个长度为256的随机字符串<code>output</code>，<code>padded</code>就是<code>layer3</code>生成的密文。</p>
-<p>循环的功能是将<code>padded</code>的每四个字符进行rsa加密得到<code>block</code>，再将<code>output</code>的后256位字符与<code>block</code>进行异或，并将结果接在<code>output</code>后面。</p>
-<p>我们可以在<code>encrypted</code>文件中得到最终output的base64编码，将其解码之后每256位分成一组，可以得到<strong>41</strong>组长度为256的字符串。按逆向的思想，以第二组为例，它是循环中第一次rsa加密的密文<code>block</code>和初始<code>output</code>进行异或的结果，由于异或的特性，我们把第二组和第一组再进行异或便可以得到第一次rsa加密的密文<code>block</code>。以此类推，最终我们可以得到全部rsa加密的密文。</p>
-<p>接下来就是如何解密这个rsa，从文件<code>encrypted</code>中我们可以得到<code>n</code>和<code>e</code>，但由于<code>n</code>很大，无法分解，所以无法正向解出。仔细分析可以知道，每次rsa加密的明文长度为4，并且均是16进制的串，例如<code>&quot;ffff&quot;</code>，范围不大，直接爆破即可。</p>
-<h3 id="layer3"><a href="#layer3" class="headerlink" title="layer3"></a>layer3</h3><p>这个函数一开始看的时候恐怖的一批，一个长度为128的字符串转为十进制数后当做<code>key</code>来与明文<code>data</code>异或。。。</p>
-<p>但后来仔细想想，不管<code>key</code>多大，和<code>i</code>异或之后都要模上0xff，那<code>key</code>不就相当于是在<code>0-256</code>之间吗。其实质是因为异或的过程中只有key的低八位在进行运算，其高位和0异或不变，之后模0xff就相当于其高位根本没起作用。</p>
-<p>下面这张图验证了我的想法</p>
-<p><img src="http://wx2.sinaimg.cn/mw690/0060lm7Tly1fufa7wwo3jj30qz0j5jtk.jpg" alt="img"></p>
-<p>那么key的范围确定在<code>0-256</code>之间了，怎样才算正确的key呢？接着往layer2看</p>
-<h3 id="layer2"><a href="#layer2" class="headerlink" title="layer2"></a>layer2</h3><p>这个函数的加密也很有意思，源码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def layer2(data):</span><br><span class="line">    return bytes([ord(b) * 17 % 251 for b in data])</span><br></pre></td></tr></table></figure>
+<p>由于网络的原因，可能会有延迟过长的情况，不过可以通过当前字符的位置和当前延时比较来纠错。</p>
+<p>经过分析不难发现，每正确一个字符，延迟加一秒，并且time = pos+1，以此我们可以写出爆破脚本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">__Auther__ = &apos;L1B0&apos;</span><br><span class="line"></span><br><span class="line">import time</span><br><span class="line">from pwn import *</span><br><span class="line">import numpy</span><br><span class="line">#context.log_level = &quot;debug&quot;</span><br><span class="line"></span><br><span class="line">flag = &apos;FLAG&#123;&apos;</span><br><span class="line">max_time = len(flag)+1</span><br><span class="line">num = len(flag)+1</span><br><span class="line">string = &apos;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+_&apos;</span><br><span class="line"></span><br><span class="line">view = numpy.zeros((50,128))</span><br><span class="line">s = &apos;&apos;</span><br><span class="line">temp = &apos;&apos;</span><br><span class="line">while True:</span><br><span class="line">    for x in string:</span><br><span class="line">        #将已check过的字符标记，节省时间</span><br><span class="line">        if view[num][ord(x)] == 1:</span><br><span class="line">            continue</span><br><span class="line">        view[num][ord(x)] = 1</span><br><span class="line"></span><br><span class="line">        io = remote(&apos;hackme.inndy.tw&apos;,7708)</span><br><span class="line">        io.recvuntil(&apos;What is your flag?&apos;)</span><br><span class="line">        a = time.time()</span><br><span class="line">        io.sendline(flag+x+&apos;&#125;&apos;)</span><br><span class="line">        s = io.recvline()</span><br><span class="line">        #print temp == s</span><br><span class="line">        if temp == &apos;&apos;:</span><br><span class="line">            temp = s</span><br><span class="line">        io.close()</span><br><span class="line">        b = time.time()</span><br><span class="line">        print &quot;num = &#123;&#125;,now_time = &#123;&#125;, now_char = &#123;&#125;, recv = &#123;&#125;,max_time = &#123;&#125;&quot;.format(num,math.floor(b-a),x,s,max_time)</span><br><span class="line"></span><br><span class="line">        if math.floor(b-a) &gt; max_time:</span><br><span class="line">            flag += x</span><br><span class="line">            num += 1</span><br><span class="line">            max_time += 1</span><br><span class="line">            print flag</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line">        elif math.floor(b-a) &lt; max_time:</span><br><span class="line">            flag = flag[:-1]</span><br><span class="line">            num -=1</span><br><span class="line">            max_time -=1</span><br><span class="line">            print &apos;wrong,now back!&apos;</span><br><span class="line"></span><br><span class="line">    if s != temp:</span><br><span class="line">        print flag</span><br></pre></td></tr></table></figure>
 
-<p>解决方法如下</p>
-<blockquote>
-<p>n = 251</p>
-<p>e = 17</p>
-<p>d = invert(e,n) = 192</p>
-<p>cipher = plaintext * e (mod n)</p>
-<p>plaintext = cipher * d(mod n)</p>
-</blockquote>
-<p>原理(反证法 by唐老板)</p>
-<blockquote>
-<p>证：m = c*d (mod n)</p>
-<p>由于c = m * e (mod n)</p>
-<p>==&gt; m = { (plain <em>e) mod n }</em> d mod n</p>
-<p>==&gt; m = m<em>e</em>d mod n</p>
-<p>由于d*e ≡ 1(mod n)</p>
-<p>故m = c*d (mod n) 得证</p>
-</blockquote>
-<p>举个例子</p>
-<p><img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1fufb5d6xi6j30co0aj748.jpg" alt="img"></p>
-<p>那么layer3和layer2都有解决办法了，直接一起解得到layer1的密文，通过观察结果是否均为<strong>可见字符</strong>判断layer3的key是否正确。</p>
-<h3 id="layer1"><a href="#layer1" class="headerlink" title="layer1"></a>layer1</h3><p>替换加密，直接<a href="https://quipqiup.com/" target="_blank" rel="noopener">在线网站</a>解一波</p>
-<h3 id="exp如下"><a href="#exp如下" class="headerlink" title="exp如下"></a>exp如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">__Auther__ = &apos;L1B0&apos;</span><br><span class="line">#https://quipqiup.com/</span><br><span class="line"></span><br><span class="line">import base64</span><br><span class="line">import binascii</span><br><span class="line">import collections</span><br><span class="line">import hashlib</span><br><span class="line">import os</span><br><span class="line">import random</span><br><span class="line">import string</span><br><span class="line">import re</span><br><span class="line">from libnum import s2n,n2s</span><br><span class="line">import gmpy2</span><br><span class="line">from Crypto.Util import number</span><br><span class="line"></span><br><span class="line">cipher = open(&apos;encrypted&apos;,&apos;rb&apos;).read()</span><br><span class="line">n=0x80dd2dec6684d43bd8f2115c88717386b2053bdb554a12d52840380af48088b7f1f71c3d3840ef4615af318bbe261d2d2d90616c0d2dcb6414e05c706f2b6d700ed98128048a2b79f57d2c6476add369ec96fb0fed936506d9aee4da5d36aaa97f117b082924c0638923e4367f250cc6cd23918702d98c5359bbb6bad2bef741c65362ad40355fd2edb35248256413d0ee576e7a351f17b9a5a3a7eebbbb2b22f27c342ef6dcaf1396085a105cf5e8b9bbf80e002053347fd9db6e83dc63599b1e1e5a81f7f2e4e2473bc2d14d040c9c6e6f62b9027853c7550a10df49c3a786962c9e9d5b95551a95077d0bd354b88ef31c5625e21edf98f721504f73e1b867</span><br><span class="line">e=0xcf98d5</span><br><span class="line"></span><br><span class="line">flag_counter = &#123;&apos; &apos;: 14, &apos;O&apos;: 6, &apos;A&apos;: 5, &apos;U&apos;: 4, &apos;I&apos;: 4, &apos;T&apos;: 4, &apos;N&apos;: 3, &apos;D&apos;: 3, &apos;E&apos;: 3, &apos;L&apos;: 3, &apos;H&apos;: 3, &apos;Y&apos;: 3, &apos;R&apos;: 3, &apos;G&apos;: 2, &apos;C&apos;: 2, &apos;F&apos;: 2, &apos;W&apos;: 2, &apos;.&apos;: 1, &apos;&#125;&apos;: 1, &apos;B&apos;: 1, &apos;V&apos;: 1, &apos;Q&apos;: 1, &apos;P&apos;: 1, &apos;X&apos;: 1, &apos;M&apos;: 1, &apos;\n&apos;: 1, &apos;&#123;&apos;: 1, &apos;K&apos;: 1, &apos;J&apos;: 1, &apos;S&apos;: 1, &apos;Z&apos;: 1&#125;</span><br><span class="line"></span><br><span class="line">flag = &quot;FLAG&#123;&quot;</span><br><span class="line"></span><br><span class="line">def xor(a, b):</span><br><span class="line">    return s2n(&apos;&apos;.join([chr(ord(i) ^ ord(j)) for i, j in zip(a, b)]))</span><br><span class="line"></span><br><span class="line">def rsa_encrypt(m):</span><br><span class="line"></span><br><span class="line">    return pow(s2n(m),e,n)</span><br><span class="line"></span><br><span class="line">def burp_m(c):</span><br><span class="line">    </span><br><span class="line">    zidian = &quot;0123456789abcdef&quot;</span><br><span class="line"></span><br><span class="line">    for i in zidian:</span><br><span class="line">        for j in zidian:</span><br><span class="line">            for k in zidian:</span><br><span class="line">                for l in zidian:</span><br><span class="line">                    m1 = i+j+k+l</span><br><span class="line">                    if rsa_encrypt(m1) == c:</span><br><span class="line">                        return m1</span><br><span class="line">    return &apos;false&apos;</span><br><span class="line"></span><br><span class="line">def decode_layer4():</span><br><span class="line">    </span><br><span class="line">    cipher_layer4 = &quot;&quot;</span><br><span class="line">    for i,j in enumerate(cipher):</span><br><span class="line">        if cipher[i:i+4] == &quot;eH/V&quot;:</span><br><span class="line">            cipher_layer4 = cipher[i:]</span><br><span class="line">            break</span><br><span class="line">    #print cipher_layer4</span><br><span class="line">    cipher_layer4 = base64.b64decode(cipher_layer4)</span><br><span class="line">    print type(cipher_layer4),len(cipher_layer4)</span><br><span class="line">    </span><br><span class="line">    cipher4 = []</span><br><span class="line">    for i in range(41):</span><br><span class="line">        c = &apos;&apos;</span><br><span class="line">        for j in range(256):</span><br><span class="line">            c += cipher_layer4[i*256+j]</span><br><span class="line">        cipher4.append(c)</span><br><span class="line">    #print len(cipher4),cipher4</span><br><span class="line">    </span><br><span class="line">    cipher3 = &quot;&quot;</span><br><span class="line">    for i in range(1,41):</span><br><span class="line">        a = xor(cipher4[i-1],cipher4[i])</span><br><span class="line">        print &quot;Try &#123;&#125; -&gt; &#123;&#125;&quot;.format(i,a)</span><br><span class="line">        b = burp_m(a)</span><br><span class="line">        if b != &apos;false&apos;:</span><br><span class="line">            print b</span><br><span class="line">            cipher3 += b</span><br><span class="line">    print cipher3</span><br><span class="line"></span><br><span class="line">def layer3_and_layer2(text,key):</span><br><span class="line"></span><br><span class="line">    cipher_3= &quot;&quot;</span><br><span class="line">    for i in text:</span><br><span class="line">        key = (key * 0xc8763 + 9487)&amp;0xff</span><br><span class="line">        cipher_3 += chr(ord(i)^key)</span><br><span class="line"></span><br><span class="line">    cipher_2 = &quot;&quot;</span><br><span class="line">    key_layer2 = gmpy2.invert(17,251)</span><br><span class="line">    print &quot;key_layer2 -&gt; &#123;&#125;&quot;.format(key_layer2)</span><br><span class="line">    for i in cipher_3:</span><br><span class="line">        cipher_2 += chr( (ord(i)*192) % 251 )</span><br><span class="line">    return cipher_2 </span><br><span class="line"></span><br><span class="line">def decode_layer3_layer2(cipher3):</span><br><span class="line"></span><br><span class="line">    cipher1 = []</span><br><span class="line">    &apos;&apos;&apos;</span><br><span class="line">	num = 0</span><br><span class="line">	flag_str = &quot;&quot;</span><br><span class="line">	print len(flag_counter)</span><br><span class="line">	for i,j in flag_counter.items():</span><br><span class="line">		num += j</span><br><span class="line">		flag_str += i</span><br><span class="line">	flag_str = &quot;&quot;.join((lambda x:(x.sort(),x)[1])(list(flag_str)))</span><br><span class="line"></span><br><span class="line">	print &quot;flag_len -&gt; &#123;&#125;&quot;.format(num)</span><br><span class="line">	&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">    for i in range(256):</span><br><span class="line">        temp = layer3_and_layer2(cipher3,i)</span><br><span class="line">        cipher1.append(temp)</span><br><span class="line">    print cipher1</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    </span><br><span class="line">    print rsa_encrypt(&apos;1234&apos;)</span><br><span class="line">#	decode_layer4()</span><br><span class="line">    print &quot;layer4 clear!&quot;</span><br><span class="line">    cipher3 = binascii.unhexlify(&quot;58cf2de2cf8e72d8c28b1925e6962d51a3630af38a84923462d397d60665995fa1313e4444890cba0e201a43fa9ee2877c115e64a4e9116362fd4c34c68fc50c6edca071d795ee295ece1d3fd46efd0d&quot;)</span><br><span class="line">    decode_layer3_layer2(cipher3)</span><br></pre></td></tr></table></figure>
+<p>经测试，这个脚本要一直爆到出flag所需时间为要很久很久，估计得几个小时，我也没耐心跑完过，跑到后面直接猜出来了。。。</p>
+
       
       
 
@@ -234,7 +211,7 @@
     
     <br>
     <strong>本文链接：</strong>
-    https://l1b0.fun/2018/08/19/hackme-inndy-crypto-mutilayer/
+    https://l1b0.fun/7003.html
     <br>
     <strong>版权声明：</strong>
     本作品采用
@@ -254,7 +231,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Crypto</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Misc</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">时序攻击</a>
         		</li>
       		
 		</ul>
@@ -321,7 +302,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://l1b0.fun/2018/08/19/hackme-inndy-crypto-mutilayer/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://l1b0.fun/7003.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -335,18 +316,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/08/noxCTF-2018-re-GuessTheString-wp/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/27428.html" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          noxCTF_2018-re_GuessTheString-wp
+          Pwnable-Kr-Toddlers-Bottle
         
       </div>
     </a>
   
   
-    <a href="/2018/08/18/安恒杯-7月月赛-Reverse-Youngter-drive/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">安恒杯-7月月赛-Reverse-Youngter-drive</div>
+    <a href="/26421.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Whitzard-CTF-RSA</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -373,7 +354,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目源码如下"><span class="toc-number">1.</span> <span class="toc-text">题目源码如下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#layer4"><span class="toc-number">2.</span> <span class="toc-text">layer4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#layer3"><span class="toc-number">3.</span> <span class="toc-text">layer3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#layer2"><span class="toc-number">4.</span> <span class="toc-text">layer2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#layer1"><span class="toc-number">5.</span> <span class="toc-text">layer1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exp如下"><span class="toc-number">6.</span> <span class="toc-text">exp如下</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-初探"><span class="toc-number">1.</span> <span class="toc-text">0x00 初探</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-解题过程"><span class="toc-number">2.</span> <span class="toc-text">0x01 解题过程</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -495,11 +476,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Format-String-Bug</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reverse</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reverse</a>
+                <a href="javascript:void(0)" class="js-tag color4">DES</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Format-String-Bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -515,10 +500,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DES</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Crypto</a>
               </li>
              
@@ -527,19 +508,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">upx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">fix-f5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Misc</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">时序攻击</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">upx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">fix-f5</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,28 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://l1b0.fun">
-  <title>2019看雪CTF-Q1-第六题 Repwn详解 | l1b0&#39;s blog</title>
+  <title>InForSec夏令营-二进制训练营总结 | l1b0&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这题花了我今天所有的空闲时间（大概五个多小时），所以有必要记录一下自己的解题过程:-) 题目和脚本  0x01 第一关（re+pwn???）第一个关键函数sub_4014C0伪代码如下">
-<meta name="keywords" content="Reverse,DES">
+  <meta name="description" content="这次训练营的内容主要是逆向的入门和pwn的shellcode的编写，个人感觉逆向没讲什么东西，pwn的话shellcode还是不会写hh，这里总结一下期间写的逆向的题目．">
+<meta name="keywords" content="Reverse">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2019看雪CTF-Q1-第六题 Repwn详解">
-<meta property="og:url" content="https://l1b0.fun/2019/03/26/2019看雪CTF-Q1-第六题-Repwn详解/index.html">
+<meta property="og:title" content="InForSec夏令营-二进制训练营总结">
+<meta property="og:url" content="https://l1b0.fun/64769.html">
 <meta property="og:site_name" content="l1b0&#39;s blog">
-<meta property="og:description" content="这题花了我今天所有的空闲时间（大概五个多小时），所以有必要记录一下自己的解题过程:-) 题目和脚本  0x01 第一关（re+pwn???）第一个关键函数sub_4014C0伪代码如下">
+<meta property="og:description" content="这次训练营的内容主要是逆向的入门和pwn的shellcode的编写，个人感觉逆向没讲什么东西，pwn的话shellcode还是不会写hh，这里总结一下期间写的逆向的题目．">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://s2.ax1x.com/2019/03/14/AATodg.md.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/03/14/AATjyV.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/03/14/AAXBp4.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/03/14/AAXsXR.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/03/14/AAXojA.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/03/14/AAXLAf.md.png">
-<meta property="og:image" content="https://s2.ax1x.com/2019/03/14/AAXbHP.png">
-<meta property="og:updated_time" content="2019-09-17T12:35:14.804Z">
+<meta property="og:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1ftnk8i7108j30ei0afgmm.jpg">
+<meta property="og:image" content="http://wx4.sinaimg.cn/mw690/0060lm7Tly1ftnk94ar86j30j907iwfr.jpg">
+<meta property="og:updated_time" content="2019-09-23T03:13:36.365Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2019看雪CTF-Q1-第六题 Repwn详解">
-<meta name="twitter:description" content="这题花了我今天所有的空闲时间（大概五个多小时），所以有必要记录一下自己的解题过程:-) 题目和脚本  0x01 第一关（re+pwn???）第一个关键函数sub_4014C0伪代码如下">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/03/14/AATodg.md.png">
+<meta name="twitter:title" content="InForSec夏令营-二进制训练营总结">
+<meta name="twitter:description" content="这次训练营的内容主要是逆向的入门和pwn的shellcode的编写，个人感觉逆向没讲什么东西，pwn的话shellcode还是不会写hh，这里总结一下期间写的逆向的题目．">
+<meta name="twitter:image" content="http://wx2.sinaimg.cn/mw690/0060lm7Tly1ftnk8i7108j30ei0afgmm.jpg">
   
     <link rel="alternative" href="/atom.xml" title="l1b0&#39;s blog" type="application/atom+xml">
   
@@ -163,21 +158,21 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2019看雪CTF-Q1-第六题-Repwn详解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-InForSec夏令营-二进制训练营总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      2019看雪CTF-Q1-第六题 Repwn详解
+      InForSec夏令营-二进制训练营总结
     </h1>
   
 
         
                 <!-- 不蒜子统计 -->        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次        </span>
-<a href="/2019/03/26/2019看雪CTF-Q1-第六题-Repwn详解/" class="archive-article-date">
-  	<time datetime="2019-03-26T12:34:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-26</time>
+<a href="/64769.html" class="archive-article-date">
+  	<time datetime="2018-07-28T12:10:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
 </a>
         
       </header>
@@ -185,42 +180,72 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>这题花了我今天所有的空闲时间（大概五个多小时），所以有必要记录一下自己的解题过程:-)</p>
-<p><a href="https://github.com/L1B0/CTF/tree/master/2019%E7%9C%8B%E9%9B%AACTF-Q1/Repwn" target="_blank" rel="noopener">题目和脚本</a></p>
+<p>这次训练营的内容主要是逆向的入门和pwn的shellcode的编写，个人感觉逆向没讲什么东西，pwn的话shellcode还是不会写hh，这里总结一下期间写的逆向的题目．</p>
 </blockquote>
-<h2 id="0x01-第一关（re-pwn-）"><a href="#0x01-第一关（re-pwn-）" class="headerlink" title="0x01 第一关（re+pwn???）"></a>0x01 第一关（re+pwn???）</h2><p>第一个关键函数sub_4014C0伪代码如下</p>
-<p><img src="https://s2.ax1x.com/2019/03/14/AATodg.md.png" alt="1"></p>
 <a id="more"></a>
 
-<p>首先输入key，进入第一个校验函数sub_4012F0，如下图</p>
-<p><img src="https://s2.ax1x.com/2019/03/14/AATjyV.png" alt="2"></p>
-<p>可以看到是进行明文比较a1[8:20]是否等于<code>X1Y0uN3tG00d</code>，这里的a1即输入的key；并且校验a1[20]是否等于<code>H</code> 。</p>
-<p>接下来进入函数sub_401460，如下图。</p>
-<p><img src="https://s2.ax1x.com/2019/03/14/AAXBp4.png" alt="img"></p>
-<p>该函数给出了key的长度为24，然后通过函数sub_4013B0校验key的前8个字节，前8个字节的校验比较简单，用z3跑一发即可，这里不再赘述。</p>
+<h3 id="0x00-level0-明文比较"><a href="#0x00-level0-明文比较" class="headerlink" title="0x00 level0-明文比较"></a>0x00 level0-明文比较</h3><h4 id="方法一：ida得到伪代码把flag直接拿出来"><a href="#方法一：ida得到伪代码把flag直接拿出来" class="headerlink" title="方法一：ida得到伪代码把flag直接拿出来"></a>方法一：ida得到伪代码把flag直接拿出来</h4><p><img src="http://wx2.sinaimg.cn/mw690/0060lm7Tly1ftnk8i7108j30ei0afgmm.jpg" alt="深度截图20180726205418"></p>
+<h4 id="方法二：ltrace命令"><a href="#方法二：ltrace命令" class="headerlink" title="方法二：ltrace命令"></a>方法二：ltrace命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ltrace ./level0</span><br></pre></td></tr></table></figure>
+
+<p><img src="http://wx4.sinaimg.cn/mw690/0060lm7Tly1ftnk94ar86j30j907iwfr.jpg" alt="img"></p>
+<p>综上得到<strong>flag{welc0me_to_inforsec}</strong></p>
+<h3 id="0x01-level1-类base64"><a href="#0x01-level1-类base64" class="headerlink" title="0x01 level1-类base64"></a>0x01 level1-类base64</h3><p>题目流程大致就是输入一串字符，经过sub_400750函数后与字符串<strong>ZmxhZ3tiNHNlNjRXafNXczFtcGxlXQ==</strong>比较．对ctf打的比较多的人一看就猜是base64，但具体是不是呢，我把这串字符用原版的base64解码之后得到</p>
 <blockquote>
-<p><a href="https://github.com/L1B0/CTF/blob/master/2019%E7%9C%8B%E9%9B%AACTF-Q1/Repwn/exp_z3.py" target="_blank" rel="noopener">z3脚本地址</a></p>
-<p>（比较坑的是题目并没有说key的前八位只能是数字，错了好多次直到问了出题人才知道这题居然还有”标准“答案。。。）</p>
+<p>flag{b4se64Wi\xf3Ws1mple]</p>
 </blockquote>
-<p>综上我们得到<code>key[0:21] = &quot;20101001X1Y0uN3tG00dH&quot;</code>。</p>
-<p>接着非常奇怪的是key 的最后四个字节仅进行了减操作，然后对key进行了复制，至此key 的校验结束。</p>
-<p>于是用Olldbg动态调试一下，在输入处下断点，F9执行至返回（停在断点），直到运行至0x40149C，如下图。</p>
-<p><img src="https://s2.ax1x.com/2019/03/14/AAXsXR.png" alt="img"></p>
-<p>往后运行一下发现这里还有个jmp指令，继续跟，发现程序崩了，并且错误提示如下。</p>
-<p><img src="https://s2.ax1x.com/2019/03/14/AAXojA.png" alt="img"></p>
-<p>我的输入是<code>20101001X1Y0uN3tG00dH123</code>，而<code>H123</code>的十六进制为<code>0x48313233</code>，各个字节经过函数sub_401460里的减操作之后得到的就是<code>0xF0EB2FC8</code>。也就是说我输入的最后四个字节经过减操作之后被当成地址进行跳转。</p>
-<p>问题是应该跳到哪里去呢？可以确定的是这个地址的最后两位一定是<code>F0</code>，并且地址的前四位一定是<code>0040</code>，以此可以知道<code>key[22:23] = &quot;Ck&quot;</code>，那么就差key[21]了。</p>
-<p>然后我就去IDA疯狂翻地址末尾为F0的函数，然后啥都没翻到。</p>
-<p>最后无意中看到0x00401BF0处的汇编十分可疑，但是此处并没有识别为函数。IDA里右键选择<code>create function</code> 即可。</p>
-<p>而<code>chr(0x46+0x1b) = &#39;a&#39;</code> ，即key就是<code>20101001X1Y0uN3tG00dHaCk</code>。</p>
-<h2 id="0x02-第二关（re）"><a href="#0x02-第二关（re）" class="headerlink" title="0x02 第二关（re）"></a>0x02 第二关（re）</h2><p><img src="https://s2.ax1x.com/2019/03/14/AAXLAf.md.png" alt="img"></p>
-<p>这个加密算法我看了一两个小时。。。</p>
-<p>最后通过一些特征数据查到这是DES加密。。。</p>
-<p>需要注意的是，这里的一大堆赋值跟v12并没有半毛钱关系。。v12的值在0x0040740C处。</p>
-<p><img src="https://s2.ax1x.com/2019/03/14/AAXbHP.png" alt="img"></p>
-<p>Dst是通过密文（64位）每4位一组得到的16个十进制数，这里我一开始看岔了。。绕了好久。</p>
-<p>综上，DES加密，密钥为<code>XiyouNet</code>，密文为<code>0x9db084ac97041e30</code>，python解一发。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from Crypto.Cipher import DES</span><br><span class="line">&gt;&gt;&gt; key = &apos;XiyouNet&apos;</span><br><span class="line">&gt;&gt;&gt; des = DES.new(key, DES.MODE_ECB)</span><br><span class="line">&gt;&gt;&gt; des.decrypt(&quot;\x9d\xb0\x84\xac\x97\x04\x1e0&quot;)</span><br><span class="line">&apos;Wel1C0me&apos;</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>其中有不可见字符，并且结尾也不对，于是看了看sub_400750函数，把模板提出来</p>
+<blockquote>
+<p>ABCDEFGHIJKLMNOPQRSTUVWfYZabcdeXghijklmnopqrstuvwxyz0123456789+/</p>
+</blockquote>
+<p>以此进行base64解码即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">__Auther__ = &apos;L1B0&apos; </span><br><span class="line"></span><br><span class="line">from z3 import *</span><br><span class="line">from libnum import s2n,n2s</span><br><span class="line">from itertools import permutations </span><br><span class="line">from ctypes import c_int32</span><br><span class="line"></span><br><span class="line">table = &apos;&apos;&apos;ABCDEFGHIJKLMNOPQRSTUVWfYZabcdeXghijklmnopqrstuvwxyz0123456789+/\x00&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">def decodeBase64(src):</span><br><span class="line">    delPaddingTail = &#123;0: 0, 2: 4, 1: 2&#125;</span><br><span class="line">    value = &apos;&apos;</span><br><span class="line">    n = src.count(&apos;=&apos;)</span><br><span class="line">    sin = src[:len(src) - n]</span><br><span class="line">    for c in sin:</span><br><span class="line">        value += bin(table.find(c))[2:].zfill(6)</span><br><span class="line">    value = value[:len(value) - delPaddingTail[n]]</span><br><span class="line">    #  print value</span><br><span class="line">    middle = []</span><br><span class="line">    for i in range(8, len(value) + 1, 8):</span><br><span class="line">        middle.append(int(value[i-8:i], 2))</span><br><span class="line">    output = middle</span><br><span class="line">    out =  hex(s2n(&apos;&apos;.join(map(chr, output))))[2: -1]</span><br><span class="line">    #  print out</span><br><span class="line">    return out</span><br><span class="line"></span><br><span class="line">crypto = &apos;ZmxhZ3tiNHNlNjRXafNXczFtcGxlXQ&apos;</span><br><span class="line">print n2s(0x666c61677b6234736536345f69735f73316d706c657d)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>flag{b4se64_is_s1mple}</p>
+</blockquote>
+<h3 id="0x02-level2-2017国赛数独"><a href="#0x02-level2-2017国赛数独" class="headerlink" title="0x02 level2-2017国赛数独"></a>0x02 level2-2017国赛数独</h3><p>待补充</p>
+<h3 id="0x03-level3-md5爆破"><a href="#0x03-level3-md5爆破" class="headerlink" title="0x03 level3-md5爆破"></a>0x03 level3-md5爆破</h3><p>题目大致流程是输入一个长度为16的<strong>数字</strong>，并且均分成四段，每段的大小均比前一段大，且每一段都大于999．然后每一段会经过sub_40083C函数的处理得到其md5，最后要符合sub400bbe函数的验证．</p>
+<p>题目的主要难度在于你在伪代码中看不出sub_40083C函数的作用（赛棍除外），我的解决方法是用gdb跟一下，将得到的结果和自己猜测的结果对比验证．</p>
+<h4 id="sub-40083C函数"><a href="#sub-40083C函数" class="headerlink" title="sub_40083C函数"></a>sub_40083C函数</h4><p>一开始我并不知道sub_40083C函数是干什么的．．．当我点进去后看到下面这串数后感觉和md5算法的数很像，百度一发发现就是md5的数．</p>
+<blockquote>
+<p>v6 = 1732584193;</p>
+<p>v7 = -271733879;</p>
+<p>v8 = -1732584194;</p>
+<p>v9 = 271733878;</p>
+</blockquote>
+<p>接着我用gdb验证了我的想法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gdb level3</span><br><span class="line">b *0x400f4a</span><br><span class="line">r 1234123512361237</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">*RAX  0x0</span><br><span class="line"> RBX  0x0</span><br><span class="line"> RCX  0x0</span><br><span class="line">*RDX  0x55</span><br><span class="line">*RDI  0x55d03e31</span><br><span class="line">*RSI  0x7fffffffcb9c ◂— 0x155d03e31</span><br><span class="line">*R8   0x603090 ◂— 0x0</span><br><span class="line">*R9   0x0</span><br><span class="line">*R10  0x8ba</span><br><span class="line">*R11  0x7ffff7ab54e0 (free) ◂— mov    rax, qword ptr [rip + 0x31da11]</span><br><span class="line"> R12  0x4006b0 ◂— xor    ebp, ebp</span><br><span class="line"> R13  0x7fffffffccc0 ◂— 0x2</span><br><span class="line"> R14  0x0</span><br><span class="line"> R15  0x0</span><br><span class="line"> RBP  0x7fffffffcbe0 —▸ 0x401100 ◂— push   r15</span><br><span class="line"> RSP  0x7fffffffcb40 —▸ 0x7fffffffccc8 —▸ 0x7fffffffcfbd ◂— 0x696c2f656d6f682f (&apos;/home/li&apos;)</span><br><span class="line">*RIP  0x400f5f ◂— lea    rdx, [rbp - 0x40]</span><br><span class="line">───────────────────────────────────────[ DISASM ]───────────────────────────────────────</span><br><span class="line">   0x400f4a    lea    rdx, [rbp - 0x50]</span><br><span class="line">   0x400f4e    mov    rax, qword ptr [rbp - 0x78]</span><br><span class="line">   0x400f52    mov    esi, 4</span><br><span class="line">   0x400f57    mov    rdi, rax</span><br><span class="line">   0x400f5a    call   0x40083c</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，字符串1234经过sub_40083C后，结果存在rdi上，rdi=0x55d03e31，而’1234’的md5值为<strong>81dc9bdb52d04dc20036dbd8313ed055</strong>，基本确定是md5算法．</p>
+<h4 id="sub400BBE函数"><a href="#sub400BBE函数" class="headerlink" title="sub400BBE函数"></a>sub400BBE函数</h4><p>这个函数当时我主要疑惑的是a2和a2[1]取得到底是md5值的哪个位置，经过gdb跟一波可以很容易发现<em>a2和a2[1]取的是md5的前两个byte，比如说’1234’的md5是81dc9bdb52d04dc20036dbd8313ed055，那么</em>a2=0x81，a2[1]=0xdc．</p>
+<p>那么接下来就可以根据sub_400bbe的条件限制爆破出符合的数．</p>
+<h4 id="exp如下"><a href="#exp如下" class="headerlink" title="exp如下"></a>exp如下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">__Author__ = &quot;L1B0@10.0.0.55&quot;</span><br><span class="line"></span><br><span class="line">import hashlib</span><br><span class="line">from string import printable</span><br><span class="line"></span><br><span class="line">def check(a,b):</span><br><span class="line">    s = [0,0,0,0]</span><br><span class="line">    </span><br><span class="line">    x = int(b[:2],16)</span><br><span class="line">    y= int(b[2:4],16)</span><br><span class="line">    if a == &apos;1234&apos;:</span><br><span class="line">        print x,y</span><br><span class="line">    v7 = [(x&amp;0xf)+48,(x&gt;&gt;4) + 48,(y&amp;0xf) + 48,(y&gt;&gt;4) + 48]#优先级问题</span><br><span class="line">    if a==&apos;1234&apos;:</span><br><span class="line">        print v7</span><br><span class="line">    for i in range(4):</span><br><span class="line">        for j in range(4):</span><br><span class="line">            if( s[j]==0 and v7[j] == ord(a[i]) ):</span><br><span class="line">                s[j] = 1</span><br><span class="line">                break</span><br><span class="line"></span><br><span class="line">    for k in range(4):</span><br><span class="line">        if s[k] == 0:</span><br><span class="line">            return 0</span><br><span class="line">    return 1</span><br><span class="line"></span><br><span class="line">my_flag = &apos;&apos;</span><br><span class="line">for a in range(10):</span><br><span class="line">    for b in range(10):</span><br><span class="line">        for c in range(10):</span><br><span class="line">            for d in range(10):</span><br><span class="line">                #flag = a+b+c+d</span><br><span class="line">                flag = str(a)+str(b)+str(c)+str(d)</span><br><span class="line">                md5_flag = hashlib.md5()</span><br><span class="line">                md5_flag.update(flag.encode(encoding=&apos;utf-8&apos;))</span><br><span class="line">                #if flag == &apos;0640&apos;:</span><br><span class="line">                #print md5_flag.hexdigest()</span><br><span class="line">                if check(flag,md5_flag.hexdigest()) == 1:</span><br><span class="line">                    print flag</span><br><span class="line">                    my_flag += flag</span><br><span class="line">print my_flag</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>正确输入：3179679093279624</p>
+<p>CTF{Md5_i3_ea5y}</p>
+</blockquote>
+<h3 id="0x04-level4-gdb跟踪"><a href="#0x04-level4-gdb跟踪" class="headerlink" title="0x04 level4-gdb跟踪"></a>0x04 level4-gdb跟踪</h3><p>题目用ida看了一下发现贼奇怪，call rax导致不能f5，经中矿的一位师傅提示用gdb跟踪．</p>
+<blockquote>
+<p>gdb infosec_level4</p>
+<p>b *(main+178)</p>
+<p>r</p>
+<p>s#单步步入</p>
+<p>n</p>
+<p>s</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> RAX  0x7fffffffcb90 ◂— 0xc180c931485e2beb</span><br><span class="line"> RBX  0x0</span><br><span class="line">*RCX  0x22</span><br><span class="line"> RDX  0x7fffffffcce8 —▸ 0x7fffffffd002 ◂— 0x5f52455454554c43 (&apos;CLUTTER_&apos;)</span><br><span class="line"> RDI  0x1</span><br><span class="line"> RSI  0x7fffffffcbc2 ◂— 0x1e230f670d0b060c</span><br><span class="line"> R8   0x400620 (__libc_csu_fini) ◂— ret    </span><br><span class="line"> R9   0x7ffff7de8cb0 (_dl_fini) ◂— push   rbp</span><br><span class="line"> R10  0x848</span><br><span class="line"> R11  0x7ffff7a5a1c0 (__libc_start_main) ◂— push   r14</span><br><span class="line"> R12  0x4003c0 (_start) ◂— xor    ebp, ebp</span><br><span class="line"> R13  0x7fffffffccd0 ◂— 0x1</span><br><span class="line"> R14  0x0</span><br><span class="line"> R15  0x0</span><br><span class="line"> RBP  0x7fffffffcbf0 —▸ 0x400590 (__libc_csu_init) ◂— mov    qword ptr [rsp - 0x28], rbp</span><br><span class="line"> RSP  0x7fffffffcb78 —▸ 0x400580 (main+180) ◂— mov    eax, 0</span><br><span class="line">*RIP  0x7fffffffcb99 ◂— 0xf8e2c6ff48133680</span><br><span class="line">───────────────────────────────────────────────────────────────────────────────────[ DISASM ]────────────────────────────────────────────────────────────────────────────────────</span><br><span class="line">   0x7fffffffcb92    pop    rsi</span><br><span class="line">   0x7fffffffcb93    xor    rcx, rcx</span><br><span class="line">   0x7fffffffcb96    add    cl, 0x22</span><br><span class="line"> ► 0x7fffffffcb99    xor    byte ptr [rsi], 0x13</span><br><span class="line">   0x7fffffffcb9c    inc    rsi</span><br><span class="line">   0x7fffffffcb9f    loop   0x7fffffffcb99</span><br><span class="line">    ↓</span><br><span class="line"> ► 0x7fffffffcb99    xor    byte ptr [rsi], 0x13</span><br><span class="line">   0x7fffffffcb9c    inc    rsi</span><br><span class="line">   0x7fffffffcb9f    loop   0x7fffffffcb99</span><br></pre></td></tr></table></figure>
+
+<p>发现一直在进行异或操作，根据题目correct the byte提示，把异或的那串数据提出来进行爆破</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">__Author__ = &quot;L1B0@10.0.0.55&quot;</span><br><span class="line"></span><br><span class="line">flag_len = 0x22</span><br><span class="line">flag = [0x0c,0x06,0x0b,0x0d,0x67,0x0f,0x23,0x1e,0x07,0x30,0x3f,0x20,0x05,0x3a,0x04,0x3d,0x13,0x09,0x2f,0x2f,0x38,0x3c,0x1b,0x07,0x0c,0x25,</span><br><span class="line">0x2e,0x7a,0x22,0x27,0x10,0x02,0x09,0x0a]</span><br><span class="line">print len(flag)==flag_len</span><br><span class="line"></span><br><span class="line">for i in range(0,255):</span><br><span class="line">    b = [chr((i^j)&amp;0xff) for j in flag]</span><br><span class="line">    b = &apos;&apos;.join(b)</span><br><span class="line">    print b</span><br><span class="line">    if &apos;ctf&apos; in b:</span><br><span class="line">        print b</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>FLAG-EiTMzujOpNwYCeervQMFod0hmZHC@</p>
+</blockquote>
+<p>交上去不对．．发现长度为0x22包括了个\n，把@删了就对了．</p>
+
       
       
 
@@ -232,7 +257,7 @@
     
     <br>
     <strong>本文链接：</strong>
-    https://l1b0.fun/2019/03/26/2019看雪CTF-Q1-第六题-Repwn详解/
+    https://l1b0.fun/64769.html
     <br>
     <strong>版权声明：</strong>
     本作品采用
@@ -254,10 +279,6 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DES</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -268,7 +289,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        			<a href="/categories/保研之路//" class="article-tag-list-link color5">保研之路</a>
         		</li>
       		
 		</ul>
@@ -323,7 +344,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://l1b0.fun/2019/03/26/2019看雪CTF-Q1-第六题-Repwn详解/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://l1b0.fun/64769.html" alt="微信分享二维码">
     </div>
 </div>
 
@@ -337,9 +358,18 @@
   
 <nav id="article-nav">
   
+    <a href="/26421.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Whitzard-CTF-RSA
+        
+      </div>
+    </a>
   
-    <a href="/2018/09/08/TokyoWesterns-CTF-2018-re-dec-dec-dec-wp/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">TokyoWesterns_CTF_2018-re_dec_dec_dec-wp</div>
+  
+    <a href="/19088.html" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux-IDA-安装-带F5功能</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -366,7 +396,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-第一关（re-pwn-）"><span class="toc-number">1.</span> <span class="toc-text">0x01 第一关（re+pwn???）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-第二关（re）"><span class="toc-number">2.</span> <span class="toc-text">0x02 第二关（re）</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#0x00-level0-明文比较"><span class="toc-number">1.</span> <span class="toc-text">0x00 level0-明文比较</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#方法一：ida得到伪代码把flag直接拿出来"><span class="toc-number">1.1.</span> <span class="toc-text">方法一：ida得到伪代码把flag直接拿出来</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法二：ltrace命令"><span class="toc-number">1.2.</span> <span class="toc-text">方法二：ltrace命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x01-level1-类base64"><span class="toc-number">2.</span> <span class="toc-text">0x01 level1-类base64</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x02-level2-2017国赛数独"><span class="toc-number">3.</span> <span class="toc-text">0x02 level2-2017国赛数独</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x03-level3-md5爆破"><span class="toc-number">4.</span> <span class="toc-text">0x03 level3-md5爆破</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sub-40083C函数"><span class="toc-number">4.1.</span> <span class="toc-text">sub_40083C函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sub400BBE函数"><span class="toc-number">4.2.</span> <span class="toc-text">sub400BBE函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exp如下"><span class="toc-number">4.3.</span> <span class="toc-text">exp如下</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0x04-level4-gdb跟踪"><span class="toc-number">5.</span> <span class="toc-text">0x04 level4-gdb跟踪</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -488,11 +518,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Format-String-Bug</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reverse</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reverse</a>
+                <a href="javascript:void(0)" class="js-tag color4">DES</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Format-String-Bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,10 +542,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DES</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Crypto</a>
               </li>
              
@@ -520,19 +550,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">upx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">fix-f5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Misc</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">时序攻击</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">upx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">fix-f5</a>
               </li>
             
             <div class="clearfix"></div>
