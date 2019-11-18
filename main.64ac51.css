@@ -556,7 +556,7 @@ html, body, #container {
         color: #B0A0AA; }
     .left-col #header .header-subtitle {
       text-align: center;
-      color: #999;
+      color: #fff;
       font-size: 14px;
       line-height: 25px;
       overflow: hidden;
