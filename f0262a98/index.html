@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://l1b0.fun/s2.ax1x.com/2019/11/21/M58qHI.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/21/M53PzQ.png">
-<meta property="og:updated_time" content="2019-11-21T03:31:53.078Z">
+<meta property="og:updated_time" content="2019-11-21T03:35:35.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HackingTeam RCS code 分析记录">
 <meta name="twitter:description" content="记录10.17起的学习过程，主要记录对rcs_code的分析。 源码链接  前言rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。 本次分析融合功能涉及四个模块，如下图。  接下来是详细分析。">
@@ -208,7 +208,7 @@
 <h4 id="PEParser"><a href="#PEParser" class="headerlink" title="PEParser"></a>PEParser</h4><p>PARSER(PEParser); - Parser.h 41</p>
 <h4 id="PEMangler"><a href="#PEMangler" class="headerlink" title="PEMangler"></a>PEMangler</h4><h3 id="libmelter"><a href="#libmelter" class="headerlink" title="libmelter"></a>libmelter</h3><h2 id="下载器-dropper"><a href="#下载器-dropper" class="headerlink" title="下载器 dropper"></a>下载器 dropper</h2><h3 id="RCSWin32Dropper-cpp"><a href="#RCSWin32Dropper-cpp" class="headerlink" title="RCSWin32Dropper.cpp"></a>RCSWin32Dropper.cpp</h3><p>代码首先接收输入，如下。</p>
 <blockquote>
-<p>usage: RCSWin32Dropper.exe -s <scout> <input> <output><br><strong>scout</strong>: 下载器？<br><strong>input</strong>: 原始PE文件<br><strong>output</strong>: 生成的文件</output></scout></p>
+<p>usage: RCSWin32Dropper.exe -s &lt;scout&gt; &lt;input&gt; &lt;output&gt;<br><strong>scout</strong>: 下载器？<br><strong>input</strong>: 原始PE文件<br><strong>output</strong>: 生成的文件</p>
 </blockquote>
 <p>这里的<strong>scout</strong>应该是指后门文件，因为在输入之后有这么一句代码<strong>sprintf(MS.core, “%s”, scoutFile);</strong>，而<strong>MS.core</strong>在后面的usage有说明<strong>core is the backdoor core</strong>。</p>
 <p>之后便调用<code>MeltFIle.cpp</code>中的<strong>MeltFile</strong>函数进行处理。</p>
@@ -527,7 +527,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Ollydbg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DES</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Format-String-Bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,10 +544,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RCS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Format-String-Bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,15 +559,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Ollydbg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Crypto</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">RSA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Z3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Upx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -580,14 +588,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">fix-f5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Z3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Upx</a>
               </li>
             
             <div class="clearfix"></div>
