@@ -164,14 +164,14 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/f0262a98/">HackingTeam RCS code 分析记录</a>
+      <a class="article-title" href="/b66b54cd/">HackingTeam-RCS-code-分析记录</a>
     </h1>
   
 
         
         
-<a href="/f0262a98/" class="archive-article-date">
-  	<time datetime="2019-11-21T03:28:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
+<a href="/b66b54cd/" class="archive-article-date">
+  	<time datetime="2019-11-21T03:34:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
 </a>
         
       </header>
@@ -184,11 +184,53 @@
 </blockquote>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。</p>
 <p>本次分析融合功能涉及四个模块，如下图。</p>
-<p><img src="https:/s2.ax1x.com/2019/11/21/M58qHI.png" alt="list"></p>
+<p><img src="https://s2.ax1x.com/2019/11/21/M58qHI.png" alt="list"></p>
 <p>接下来是详细分析。</p>
-        
-          <a class="article-more-a" href="/f0262a98/#more">more >></a>
-        
+<h2 id="融合（代码不全-，跳过）"><a href="#融合（代码不全-，跳过）" class="headerlink" title="融合（代码不全==，跳过）"></a>融合（代码不全==，跳过）</h2><h3 id="melter"><a href="#melter" class="headerlink" title="melter"></a>melter</h3><p>这个模块包含<code>main.cc</code>文件，是融合模块的入口点。<br>用于接收输入参数，并创建PEMelter对象。</p>
+<p>输入参数如下</p>
+<blockquote>
+<p><strong>help</strong>:    参数说明<br><strong>input</strong>:    目标文件的路径，需为<strong>Win32 PE</strong>可执行文件<br><strong>output</strong>: 输出文件的路径，默认为output.exe<br><strong>rcs</strong>:      恶意程序的路径</p>
+</blockquote>
+<p>在接收输入之后判断每个参数（文件）是否存在，并将输入参数输出，之后便创建一个<strong>PEMelter对象</strong>。</p>
+<h3 id="libpemelter"><a href="#libpemelter" class="headerlink" title="libpemelter"></a>libpemelter</h3><p>该模块主要由四个部分组成，分别是<code>PEMelter</code>，<code>PEParser</code>，<code>PEMangler</code>和一个头文件<code>win32type.h</code>。</p>
+<h4 id="win32type-h"><a href="#win32type-h" class="headerlink" title="win32type.h"></a>win32type.h</h4><p>该文件主要定义了一些<strong>关于pe文件解析的结构体</strong>，如IMAGE_SECTION_HEADER，IMAGE_IMPORT_DESCRIPTOR等；<br>以及一些<strong>需要预先声明的定值</strong>，如IMAGE_SIZEOF_FILE_HEADER等。</p>
+<h4 id="PEMelter"><a href="#PEMelter" class="headerlink" title="PEMelter"></a>PEMelter</h4><p>PEMelter类的<strong>构造函数</strong>中创建了三个对象，分别是PEParser、PEMangler以及Melter。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PEMelter::PEMelter()</span><br><span class="line">&#123;</span><br><span class="line">    parser_ = new PEParser();</span><br><span class="line">    mangler_ = new PEMangler();</span><br><span class="line">    melter_ = new Melter(*parser_, *mangler_);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="PEParser"><a href="#PEParser" class="headerlink" title="PEParser"></a>PEParser</h4><p>PARSER(PEParser); - Parser.h 41</p>
+<h4 id="PEMangler"><a href="#PEMangler" class="headerlink" title="PEMangler"></a>PEMangler</h4><h3 id="libmelter"><a href="#libmelter" class="headerlink" title="libmelter"></a>libmelter</h3><h2 id="下载器-dropper"><a href="#下载器-dropper" class="headerlink" title="下载器 dropper"></a>下载器 dropper</h2><h3 id="RCSWin32Dropper-cpp"><a href="#RCSWin32Dropper-cpp" class="headerlink" title="RCSWin32Dropper.cpp"></a>RCSWin32Dropper.cpp</h3><p>代码首先接收输入，如下。</p>
+<blockquote>
+<p>usage: RCSWin32Dropper.exe -s &lt;scout&gt; &lt;input&gt; &lt;output&gt;<br><strong>scout</strong>: 下载器？<br><strong>input</strong>: 原始PE文件<br><strong>output</strong>: 生成的文件</p>
+</blockquote>
+<p>这里的<strong>scout</strong>应该是指后门文件，因为在输入之后有这么一句代码<strong>sprintf(MS.core, “%s”, scoutFile);</strong>，而<strong>MS.core</strong>在后面的usage有说明<strong>core is the backdoor core</strong>。</p>
+<p>之后便调用<code>MeltFIle.cpp</code>中的<strong>MeltFile</strong>函数进行处理。</p>
+<h3 id="读取并解析文件内容-MelterFile-cpp-MeltFile-amp-PEObject-cpp-Parse"><a href="#读取并解析文件内容-MelterFile-cpp-MeltFile-amp-PEObject-cpp-Parse" class="headerlink" title="读取并解析文件内容: MelterFile.cpp - MeltFile &amp; PEObject.cpp - Parse"></a>读取并解析文件内容: MelterFile.cpp - MeltFile &amp; PEObject.cpp - Parse</h3><p>MeltFile函数参数说明如下</p>
+<p>int MeltFile( char const * const input_path, char const * const  output_path, MelterStruct const * const melter_data, BOOL isScout, char  *scout_file )</p>
+<blockquote>
+<p>input_path：输入的input路径<br>output_path：输入的output路径<br>melter_data：一个融合器的结构体<br>isScout：是否为scout?<br>scout_file: 输入的scout路径</p>
+</blockquote>
+<p>这里的调用参数内容为MeltFile( inputFile, outputFile, &amp;MS, TRUE, scoutFile );</p>
+<p>首先读取input_path的内容，并复制一份至data变量，防止修改源文件。</p>
+<p>接着创建一个PEObject对象，构造函数参数内容为input_path的内容data及文件大小size。<br>然后通过PEObject对象的<strong>parse</strong>函数判断文件是否能被解析。</p>
+<p>解析过程如下</p>
+<ol>
+<li>读取文件头（前0x3000）判断文件是否是SFXCAB.exe类型的补丁（_SFX_CAB_EXE_PATH）</li>
+<li>解析DOSHeader、NTHeader。判断是否为<code>Win32 PE for IA-32</code>；是否开启ASLR，NX，FORCE_INTEGRITY，开启则消除标志位；是否绑定导入表，绑定则重置为0；是否开启重定位表，开启则重置为0；读取各个section的内容。</li>
+<li>解析Resources，读取resources段。</li>
+<li>解析Text段，<strong>寻找hook的位置</strong>。通过读取OEP之后的0x400数据，经过反汇编后，寻找长度大于等于5且为jmp或call类的指令，即为要hook的位置（jmp为一定有效的，call为潜在有效的指令）。</li>
+</ol>
+<h3 id="嵌入下载器（dropper）-PEObject-cpp-embedDropper"><a href="#嵌入下载器（dropper）-PEObject-cpp-embedDropper" class="headerlink" title="嵌入下载器（dropper）: PEObject.cpp - embedDropper"></a>嵌入下载器（dropper）: PEObject.cpp - embedDropper</h3><p>首先通过NTHeaders读取OEP（程序入口点），并找到OEP对应的section。</p>
+<p>接着创建一个DropperObject对象名为dropper，将之前在解析文件时找到的hookpoint复制到dropper中。</p>
+<p><strong>这里有个dropper.build()忘了看（功能好像就是把木马放进dropper里）。。。</strong></p>
+<p>创建dropper成功之后获取Resources section的地址，调用<code>TuneResources</code>函数对<strong>资源段</strong>进行调整，如下图，修改第一层目录的第一个索引，指向新的table（复制原来的table，新增一个表项）。可以看到新增的data   entry记录的是dropper的大小及地址，故这里的下载器应该是被加入到资源表的索引中，但此时dropper的数据还没有放进去，只是预留了一块空间。</p>
+<p><img src="https://s2.ax1x.com/2019/11/21/M53PzQ.png" alt="3550652054011fc9b9a8530f6cbe8d52.png"></p>
+<p>之后malloc了一个大小为<code>sizeof(ResourcesSection)+sizeof(dropper)+sizeofResources()</code>的空间，将资源段的数据copy进去，将dropper数据copy进去，调用<code>_writeResources</code>遍历资源段并复制一遍数据，可以说是一个新的资源段（舍去了之前因调整而无索引的table）。并魔改资源段地址为新的资源段地址及大小。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://blog.csdn.net/zhyulo/article/details/85930045" target="_blank" rel="noopener">PE文件解析-资源(Resource)</a></li>
+<li><a href="https://xakep.ru/2016/12/29/hacking-team-galileo-sources/" target="_blank" rel="noopener">歪果仁的一点分析</a></li>
+<li><a href="https://0x00sec.org/t/user-mode-rootkits-iat-and-inline-hooking/1108" target="_blank" rel="noopener">user-mode-rootkits-iat-and-inline-hooking</a></li>
+</ol>
+
       
       
 
@@ -231,7 +273,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/f0262a98/">展开全文 >></a>
+          <a class="article-more-a" href="/b66b54cd/">展开全文 >></a>
         </p>
       
 
@@ -1304,15 +1346,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Z3</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Upx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
               </li>
              
               <li class="article-tag-list-item">
