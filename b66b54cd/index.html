@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="https://l1b0.fun">
   <title>HackingTeam-RCS-code-分析记录 | l1b0&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="记录10.17起的学习过程，主要记录对rcs_code的分析。 源码链接  前言rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。 本次分析融合功能涉及四个模块，如下图。  接下来是详细分析。 融合（代码不全==，跳过）melter这个模块包含main.cc文件，是融合模块的入口点。用于接收输入参数，并创建PEMe">
+  <meta name="description" content="记录10.17起的学习过程，主要记录对rcs_code的分析。 源码链接  前言rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。 本次分析融合功能涉及四个模块，如下图。">
 <meta name="keywords" content="HackingTeam,RCS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HackingTeam-RCS-code-分析记录">
 <meta property="og:url" content="https://l1b0.fun/b66b54cd/index.html">
 <meta property="og:site_name" content="l1b0&#39;s blog">
-<meta property="og:description" content="记录10.17起的学习过程，主要记录对rcs_code的分析。 源码链接  前言rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。 本次分析融合功能涉及四个模块，如下图。  接下来是详细分析。 融合（代码不全==，跳过）melter这个模块包含main.cc文件，是融合模块的入口点。用于接收输入参数，并创建PEMe">
+<meta property="og:description" content="记录10.17起的学习过程，主要记录对rcs_code的分析。 源码链接  前言rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。 本次分析融合功能涉及四个模块，如下图。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/21/M58qHI.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/21/M53PzQ.png">
-<meta property="og:updated_time" content="2019-11-21T04:00:40.835Z">
+<meta property="og:updated_time" content="2019-11-23T06:07:21.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HackingTeam-RCS-code-分析记录">
-<meta name="twitter:description" content="记录10.17起的学习过程，主要记录对rcs_code的分析。 源码链接  前言rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。 本次分析融合功能涉及四个模块，如下图。  接下来是详细分析。 融合（代码不全==，跳过）melter这个模块包含main.cc文件，是融合模块的入口点。用于接收输入参数，并创建PEMe">
+<meta name="twitter:description" content="记录10.17起的学习过程，主要记录对rcs_code的分析。 源码链接  前言rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。 本次分析融合功能涉及四个模块，如下图。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/11/21/M58qHI.png">
   
     <link rel="alternative" href="/atom.xml" title="l1b0&#39;s blog" type="application/atom+xml">
@@ -191,6 +191,8 @@
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>rcs的全称是remote control system，意思是远程控制系统，是一套用于政府拦截的黑客套件，实现了全平台的监控系统。</p>
 <p>本次分析融合功能涉及四个模块，如下图。</p>
 <p><img src="https://s2.ax1x.com/2019/11/21/M58qHI.png" alt="list"></p>
+<a id="more"></a>
+
 <p>接下来是详细分析。</p>
 <h2 id="融合（代码不全-，跳过）"><a href="#融合（代码不全-，跳过）" class="headerlink" title="融合（代码不全==，跳过）"></a>融合（代码不全==，跳过）</h2><h3 id="melter"><a href="#melter" class="headerlink" title="melter"></a>melter</h3><p>这个模块包含<code>main.cc</code>文件，是融合模块的入口点。<br>用于接收输入参数，并创建PEMelter对象。</p>
 <p>输入参数如下</p>
@@ -352,6 +354,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/126054f9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          hackme.inndy.tw Misc zipfile Writeup
+        
+      </div>
+    </a>
   
   
     <a href="/f28ff473/" id="article-nav-older" class="article-nav-link-wrap">
@@ -525,27 +536,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Ollydbg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DES</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Format-String-Bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">HackingTeam</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RCS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linux-IDA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -557,7 +552,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Crypto</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linux-IDA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hackme-inndy-tw</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Ollydbg</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,7 +572,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
+                <a href="javascript:void(0)" class="js-tag color2">Crypto</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,11 +584,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Zip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">upx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">fix-f5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">HackingTeam</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RCS</a>
               </li>
             
             <div class="clearfix"></div>
