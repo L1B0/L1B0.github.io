@@ -16,16 +16,16 @@
 <meta property="og:site_name" content="l1b0&#39;s blog">
 <meta property="og:description" content="最近在摸鱼，在hackme inndy的网站上做了一道有点意思的misc，这里记录一下解题过程，不放flag。 题目文件及exp     # Type Name Points Solved Description    14 Misc [Solved] zipfile 100 3 Unzip this file">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://l1b0.fun/media/l1b0/DATA/googleDownload/zipfile/%20https:/s2.ax1x.com/2019/11/23/MbEQdf.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/23/MbEQdf.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/23/MbVkmq.md.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/23/MbV7NT.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/23/MbZvRg.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/11/23/MbmwjJ.png">
-<meta property="og:updated_time" content="2019-11-23T06:06:12.473Z">
+<meta property="og:updated_time" content="2019-11-23T06:14:04.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hackme.inndy.tw Misc zipfile Writeup">
 <meta name="twitter:description" content="最近在摸鱼，在hackme inndy的网站上做了一道有点意思的misc，这里记录一下解题过程，不放flag。 题目文件及exp     # Type Name Points Solved Description    14 Misc [Solved] zipfile 100 3 Unzip this file">
-<meta name="twitter:image" content="https://l1b0.fun/media/l1b0/DATA/googleDownload/zipfile/%20https:/s2.ax1x.com/2019/11/23/MbEQdf.md.png">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/23/MbEQdf.png">
   
     <link rel="alternative" href="/atom.xml" title="l1b0&#39;s blog" type="application/atom+xml">
   
@@ -213,6 +213,8 @@
 </tbody></table>
 <a id="more"></a>
 
+
+
 <h2 id="0x01-unzip-zipfile"><a href="#0x01-unzip-zipfile" class="headerlink" title="0x01 unzip zipfile"></a>0x01 unzip zipfile</h2><p>首先看下题目给的文件，是个zip压缩包，里面嵌套了很多层zip，手动解压是不太可能的。</p>
 <p>这里我写了个简单的shell脚本，文件<code>input</code>内容为<code>y</code>，因为解压过程中文件名一样会将原文件覆盖。</p>
 <p>通过<code>ls -l</code>查看压缩包大小判断是否解压完毕。</p>
@@ -220,7 +222,7 @@
 
 <p>过程如下图，可以看到有个文件大小变大的突变，这时停止脚本。</p>
 <p>得到一个大小为<code>2465252B</code>的压缩包。</p>
-<p><img src="/media/l1b0/DATA/googleDownload/zipfile/%20https:/s2.ax1x.com/2019/11/23/MbEQdf.md.png" alt="unzip"></p>
+<p><img src="https://s2.ax1x.com/2019/11/23/MbEQdf.png" alt="unzip"></p>
 <h2 id="0x02-处理zipfile-zip"><a href="#0x02-处理zipfile-zip" class="headerlink" title="0x02 处理zipfile.zip"></a>0x02 处理zipfile.zip</h2><p>用010editor解析压缩包，看到包含500多个文件。</p>
 <p><img src="https://s2.ax1x.com/2019/11/23/MbVkmq.md.png" alt="010-zipfile"></p>
 <p>尝试解压会发现这个解压后的文件名很骚，极长而且带有斜杠于是被当成目录结构，例子如下，并且有<strong>重复文件名出现</strong>。</p>
