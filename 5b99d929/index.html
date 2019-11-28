@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://l1b0.fun">
-  <title>Archives: 2018/9 | l1b0&#39;s blog</title>
+  <title>Reversing-Kr x64-Lotto Writeup | l1b0&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="l1b0&#39;s blog">
-<meta property="og:url" content="https://l1b0.fun/archives/2018/09/index.html">
+  <meta name="description" content="题目及脚本 ida debug真香！！！  解题思路题目名为Lotto，意思是赌博，64位exe，用ida打开瞅瞅。 关键伪码如下 123456789101112131415161718192021222324252627282930  v0 = time64(0i64); // 获取当前时间戳  srand(v0); // 生成种子  do  &amp;#123;    wprintf(L&quot;\n\t\">
+<meta name="keywords" content="Reverse,Ida-debug,Patch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reversing-Kr x64-Lotto Writeup">
+<meta property="og:url" content="https://l1b0.fun/5b99d929/index.html">
 <meta property="og:site_name" content="l1b0&#39;s blog">
+<meta property="og:description" content="题目及脚本 ida debug真香！！！  解题思路题目名为Lotto，意思是赌博，64位exe，用ida打开瞅瞅。 关键伪码如下 123456789101112131415161718192021222324252627282930  v0 = time64(0i64); // 获取当前时间戳  srand(v0); // 生成种子  do  &amp;#123;    wprintf(L&quot;\n\t\">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/28/QPvDt1.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/11/28/QPvNXF.png">
+<meta property="og:updated_time" content="2019-11-28T06:36:26.979Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="l1b0&#39;s blog">
+<meta name="twitter:title" content="Reversing-Kr x64-Lotto Writeup">
+<meta name="twitter:description" content="题目及脚本 ida debug真香！！！  解题思路题目名为Lotto，意思是赌博，64位exe，用ida打开瞅瞅。 关键伪码如下 123456789101112131415161718192021222324252627282930  v0 = time64(0i64); // 获取当前时间戳  srand(v0); // 生成种子  do  &amp;#123;    wprintf(L&quot;\n\t\">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/11/28/QPvDt1.png">
   
     <link rel="alternative" href="/atom.xml" title="l1b0&#39;s blog" type="application/atom+xml">
   
@@ -155,37 +163,79 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Reversing-Kr-x64-Lotto-Writeup" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/60311/" class="archive-article-date">
-  	<time datetime="2018-09-08T12:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/60311/">TokyoWesterns_CTF_2018-re_dec_dec_dec-wp</a>
+    <h1 class="article-title" itemprop="name">
+      Reversing-Kr x64-Lotto Writeup
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+                <!-- 不蒜子统计 -->        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次        </span>
+<a href="/5b99d929/" class="archive-article-date">
+  	<time datetime="2019-11-28T06:35:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p><a href="https://github.com/L1B0/CTF/tree/master/Reversing-Kr/Lotto" target="_blank" rel="noopener">题目及脚本</a></p>
+<p>ida debug真香！！！</p>
+</blockquote>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>题目名为Lotto，意思是赌博，64位exe，用ida打开瞅瞅。</p>
+<p>关键伪码如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">  v0 = time64(<span class="number">0</span>i64); <span class="comment">// 获取当前时间戳</span></span><br><span class="line">  srand(v0); <span class="comment">// 生成种子</span></span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">  &#123;</span><br><span class="line">    wprintf(<span class="string">L"\n\t\tL O T T O\t\t\n\n"</span>);</span><br><span class="line">    wprintf(<span class="string">L"Input the number: "</span>);</span><br><span class="line">    wscanf_s(<span class="string">L"%d %d %d %d %d %d"</span>, &amp;v13, &amp;v14, &amp;v15, &amp;v16, &amp;v17, &amp;v18); <span class="comment">// 输入6个数字</span></span><br><span class="line">    wsystem(<span class="string">L"cls"</span>);</span><br><span class="line">    Sleep(<span class="number">0x1F4</span>u);</span><br><span class="line">    v1 = <span class="number">0</span>i64;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">      *(&amp;v18 + ++v1) = rand() % <span class="number">100</span>; <span class="comment">// 生成随机数</span></span><br><span class="line">    <span class="keyword">while</span> ( v1 &lt; <span class="number">6</span> ); <span class="comment">// 六个随机数</span></span><br><span class="line">    v2 = <span class="number">1</span>;</span><br><span class="line">    v3 = <span class="number">0</span>;</span><br><span class="line">    v4 = <span class="number">0</span>i64;</span><br><span class="line">    byte_7FF6A18235F0 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> ( *(<span class="keyword">int</span> *)((<span class="keyword">char</span> *)&amp;v19 + v4) == *(<span class="keyword">int</span> *)((<span class="keyword">char</span> *)&amp;v13 + v4) ) <span class="comment">// 判断输入与随机数是否相等</span></span><br><span class="line">    &#123;</span><br><span class="line">      v4 += <span class="number">4</span>i64;</span><br><span class="line">      ++v3;</span><br><span class="line">      <span class="keyword">if</span> ( v4 &gt;= <span class="number">24</span> ) <span class="comment">// 全部相等则解密，输出password</span></span><br><span class="line">        <span class="keyword">goto</span> LABEL_9;</span><br><span class="line">    &#125;</span><br><span class="line">    v2 = <span class="number">0</span>;</span><br><span class="line">    byte_7FF6A18235F0 = <span class="number">0</span>;</span><br><span class="line">LABEL_9:</span><br><span class="line">    ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> ( v3 != <span class="number">6</span> );</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>逻辑比较简单，题目需要我们输入<strong>六个数</strong>，然后与<strong>当前时间</strong>为种子生成随机数进行比较，<strong>全部相等</strong>则输出password。</p>
+<p>这里我提供几个思路。</p>
+<p>一是<strong>不断修改系统时间</strong>为一个固定值，使得生成的随机数可预测。</p>
+<p>二是通过<strong>debug</strong>修改时间戳为一个自己已知生成的随机数的时间（写wp的时候发现好像只需要debug，然后查看time64得到的时间戳，然后自己生成对应的随机数，再放进去就好了233）。</p>
+<p>三是当做<strong>逆向</strong>来做，跳过这个验证的过程，直接逆后面的解密算法。</p>
+<p>四是<strong>patch</strong>一些关键的check和跳转，使得错误的输入能输出password。</p>
+<p>尝试第一种方法的时候发现没成功:(，第三种方法不知道哪出错了跑出来的字符都不可见。</p>
+<p>然后就用<code>ida64 x windbg</code>来调试了，一发即中。</p>
+<blockquote>
+<p>ida pro调试真香:-)</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/11/28/QPvDt1.png" alt="QPvDt1.png"></p>
+<p>第四种方法我patch了三个地方，如下图</p>
+<p><img src="https://s2.ax1x.com/2019/11/28/QPvNXF.png" alt="QPvNXF.png"></p>
+<p>随便输入几个数字后就能输出password，但password一闪而过。。。</p>
+
+      
+      
+
+
+  <div class="declare">
+    <strong>本文作者：</strong>
+    
+      l1b0
+    
+    <br>
+    <strong>本文链接：</strong>
+    https://l1b0.fun/5b99d929/
+    <br>
+    <strong>版权声明：</strong>
+    本作品采用
+    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    进行许可。转载请注明出处！
+    
+  </div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -193,11 +243,19 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Ida-debug</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Patch</a>
+        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -210,68 +268,134 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://l1b0.fun/5b99d929/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/5961/" class="archive-article-date">
-  	<time datetime="2018-09-08T12:31:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/9a891a97/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Reversing-Kr position Writeup</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/5961/">noxCTF_2018-re_GuessTheString-wp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-number">1.</span> <span class="toc-text">解题思路</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
+  
+  <article class="article article-type-post " itemprop="blogPost">
+  <!-- 《utteranc评论：基于github issue的评论系统 --> 
+   
+      <section id="comments" class="comments"> 
+      <style>
+        .utterances{max-width: 85%;}
+      </style> 
+      <script src="https://utteranc.es/client.js"
+                repo="L1B0/L1B0.github.io"
+                issue-term="title"
+                theme="github-light"
+                crossorigin="anonymous"
+                async> 
+      </script> 
+      </section> 
+   
+  </article>
+  <!-- utteranc评论》 -->
   
 
-    
+  
 
+  
 
           </div>
         </div>
@@ -307,8 +431,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

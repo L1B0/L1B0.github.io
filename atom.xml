@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://l1b0.fun/"/>
-  <updated>2019-11-25T09:40:50.622Z</updated>
+  <updated>2019-11-28T06:36:26.979Z</updated>
   <id>https://l1b0.fun/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Reversing-Kr x64-Lotto Writeup</title>
+    <link href="https://l1b0.fun/5b99d929/"/>
+    <id>https://l1b0.fun/5b99d929/</id>
+    <published>2019-11-28T06:35:03.000Z</published>
+    <updated>2019-11-28T06:36:26.979Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p><a href="https://github.com/L1B0/CTF/tree/master/Reversing-Kr/Lotto" target="_blank" rel="noopener">题目及脚本</a></p><p>ida debug真香！！！</p></blockquote><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>题目名为Lotto，意思是赌博，64位exe，用ida打开瞅瞅。</p><p>关键伪码如下</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">  v0 = time64(<span class="number">0</span>i64); <span class="comment">// 获取当前时间戳</span></span><br><span class="line">  srand(v0); <span class="comment">// 生成种子</span></span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">  &#123;</span><br><span class="line">    wprintf(<span class="string">L"\n\t\tL O T T O\t\t\n\n"</span>);</span><br><span class="line">    wprintf(<span class="string">L"Input the number: "</span>);</span><br><span class="line">    wscanf_s(<span class="string">L"%d %d %d %d %d %d"</span>, &amp;v13, &amp;v14, &amp;v15, &amp;v16, &amp;v17, &amp;v18); <span class="comment">// 输入6个数字</span></span><br><span class="line">    wsystem(<span class="string">L"cls"</span>);</span><br><span class="line">    Sleep(<span class="number">0x1F4</span>u);</span><br><span class="line">    v1 = <span class="number">0</span>i64;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">      *(&amp;v18 + ++v1) = rand() % <span class="number">100</span>; <span class="comment">// 生成随机数</span></span><br><span class="line">    <span class="keyword">while</span> ( v1 &lt; <span class="number">6</span> ); <span class="comment">// 六个随机数</span></span><br><span class="line">    v2 = <span class="number">1</span>;</span><br><span class="line">    v3 = <span class="number">0</span>;</span><br><span class="line">    v4 = <span class="number">0</span>i64;</span><br><span class="line">    byte_7FF6A18235F0 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> ( *(<span class="keyword">int</span> *)((<span class="keyword">char</span> *)&amp;v19 + v4) == *(<span class="keyword">int</span> *)((<span class="keyword">char</span> *)&amp;v13 + v4) ) <span class="comment">// 判断输入与随机数是否相等</span></span><br><span class="line">    &#123;</span><br><span class="line">      v4 += <span class="number">4</span>i64;</span><br><span class="line">      ++v3;</span><br><span class="line">      <span class="keyword">if</span> ( v4 &gt;= <span class="number">24</span> ) <span class="comment">// 全部相等则解密，输出password</span></span><br><span class="line">        <span class="keyword">goto</span> LABEL_9;</span><br><span class="line">    &#125;</span><br><span class="line">    v2 = <span class="number">0</span>;</span><br><span class="line">    byte_7FF6A18235F0 = <span class="number">0</span>;</span><br><span class="line">LABEL_9:</span><br><span class="line">    ;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">while</span> ( v3 != <span class="number">6</span> );</span><br></pre></td></tr></table></figure><a id="more"></a><p>逻辑比较简单，题目需要我们输入<strong>六个数</strong>，然后与<strong>当前时间</strong>为种子生成随机数进行比较，<strong>全部相等</strong>则输出password。</p><p>这里我提供几个思路。</p><p>一是<strong>不断修改系统时间</strong>为一个固定值，使得生成的随机数可预测。</p><p>二是通过<strong>debug</strong>修改时间戳为一个自己已知生成的随机数的时间（写wp的时候发现好像只需要debug，然后查看time64得到的时间戳，然后自己生成对应的随机数，再放进去就好了233）。</p><p>三是当做<strong>逆向</strong>来做，跳过这个验证的过程，直接逆后面的解密算法。</p><p>四是<strong>patch</strong>一些关键的check和跳转，使得错误的输入能输出password。</p><p>尝试第一种方法的时候发现没成功:(，第三种方法不知道哪出错了跑出来的字符都不可见。</p><p>然后就用<code>ida64 x windbg</code>来调试了，一发即中。</p><blockquote><p>ida pro调试真香:-)</p></blockquote><p><img src="https://s2.ax1x.com/2019/11/28/QPvDt1.png" alt="QPvDt1.png"></p><p>第四种方法我patch了三个地方，如下图</p><p><img src="https://s2.ax1x.com/2019/11/28/QPvNXF.png" alt="QPvNXF.png"></p><p>随便输入几个数字后就能输出password，但password一闪而过。。。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/L1B0/CTF/tree/master/Reversing-Kr/Lotto&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;题目及脚本&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ida debug真香！！！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;解题思路&quot;&gt;&lt;a href=&quot;#解题思路&quot; class=&quot;headerlink&quot; title=&quot;解题思路&quot;&gt;&lt;/a&gt;解题思路&lt;/h2&gt;&lt;p&gt;题目名为Lotto，意思是赌博，64位exe，用ida打开瞅瞅。&lt;/p&gt;
+&lt;p&gt;关键伪码如下&lt;/p&gt;
+&lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;  v0 = time64(&lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;i64); &lt;span class=&quot;comment&quot;&gt;// 获取当前时间戳&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  srand(v0); &lt;span class=&quot;comment&quot;&gt;// 生成种子&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    wprintf(&lt;span class=&quot;string&quot;&gt;L&quot;\n\t\tL O T T O\t\t\n\n&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    wprintf(&lt;span class=&quot;string&quot;&gt;L&quot;Input the number: &quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    wscanf_s(&lt;span class=&quot;string&quot;&gt;L&quot;%d %d %d %d %d %d&quot;&lt;/span&gt;, &amp;amp;v13, &amp;amp;v14, &amp;amp;v15, &amp;amp;v16, &amp;amp;v17, &amp;amp;v18); &lt;span class=&quot;comment&quot;&gt;// 输入6个数字&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    wsystem(&lt;span class=&quot;string&quot;&gt;L&quot;cls&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Sleep(&lt;span class=&quot;number&quot;&gt;0x1F4&lt;/span&gt;u);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    v1 = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;i64;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      *(&amp;amp;v18 + ++v1) = rand() % &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;// 生成随机数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; ( v1 &amp;lt; &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; ); &lt;span class=&quot;comment&quot;&gt;// 六个随机数&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    v2 = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    v3 = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    v4 = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;i64;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    byte_7FF6A18235F0 = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; ( *(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; *)((&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; *)&amp;amp;v19 + v4) == *(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; *)((&lt;span class=&quot;keyword&quot;&gt;char&lt;/span&gt; *)&amp;amp;v13 + v4) ) &lt;span class=&quot;comment&quot;&gt;// 判断输入与随机数是否相等&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      v4 += &lt;span class=&quot;number&quot;&gt;4&lt;/span&gt;i64;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      ++v3;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; ( v4 &amp;gt;= &lt;span class=&quot;number&quot;&gt;24&lt;/span&gt; ) &lt;span class=&quot;comment&quot;&gt;// 全部相等则解密，输出password&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;goto&lt;/span&gt; LABEL_9;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    v2 = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    byte_7FF6A18235F0 = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;LABEL_9:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; ( v3 != &lt;span class=&quot;number&quot;&gt;6&lt;/span&gt; );&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="https://l1b0.fun/categories/CTF/"/>
+    
+    
+      <category term="Reverse" scheme="https://l1b0.fun/tags/Reverse/"/>
+    
+      <category term="Ida-debug" scheme="https://l1b0.fun/tags/Ida-debug/"/>
+    
+      <category term="Patch" scheme="https://l1b0.fun/tags/Patch/"/>
+    
+  </entry>
   
   <entry>
     <title>Reversing-Kr position Writeup</title>
@@ -207,11 +240,11 @@
     
       <category term="Reverse" scheme="https://l1b0.fun/tags/Reverse/"/>
     
-      <category term="Ollydbg" scheme="https://l1b0.fun/tags/Ollydbg/"/>
-    
       <category term="Z3" scheme="https://l1b0.fun/tags/Z3/"/>
     
       <category term="hackme-inndy-tw" scheme="https://l1b0.fun/tags/hackme-inndy-tw/"/>
+    
+      <category term="Ollydbg" scheme="https://l1b0.fun/tags/Ollydbg/"/>
     
       <category term="Upx" scheme="https://l1b0.fun/tags/Upx/"/>
     
@@ -602,29 +635,6 @@
     
     
       <category term="Reverse" scheme="https://l1b0.fun/tags/Reverse/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux-IDA-安装-带F5功能</title>
-    <link href="https://l1b0.fun/19088/"/>
-    <id>https://l1b0.fun/19088/</id>
-    <published>2018-07-06T12:08:07.000Z</published>
-    <updated>2019-09-23T03:13:36.365Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Version-1-0"><a href="#Version-1-0" class="headerlink" title="Version 1.0"></a>Version 1.0</h2><h3 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h3><p>最近在熟悉deepin系统，想着把逆向的一些软件也迁移过去，但像ida，Ollydbg这些工具一般都是在windows下使用，所以会遇到一些麻烦，最好的解决方法其实就是在deepin上装个虚拟机（window_xp的52破解版）hhh，里面啥都有。</p><a id="more"></a><h3 id="0x01-准备工作"><a href="#0x01-准备工作" class="headerlink" title="0x01 准备工作"></a>0x01 准备工作</h3><p>首先装个wine</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install wine</span><br></pre></td></tr></table></figure><p>然后下载这个<a href="https://pan.baidu.com/s/1PR3C-1X2tkP2dAOi1t-l9g" target="_blank" rel="noopener">安装包</a>？或者叫啥？随便了。。。</p><p>可能有点大，下载会慢一点。</p><h3 id="0x02-安装"><a href="#0x02-安装" class="headerlink" title="0x02 安装"></a>0x02 安装</h3><p>打开终端</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wine x64balabala //刚刚下载的文件名</span><br></pre></td></tr></table></figure><p>过程中会叫你安装python2.7，不过linux里自带python，取消即可。</p><h3 id="最后感谢lyd大佬的帮助和提供的文件，膜一发"><a href="#最后感谢lyd大佬的帮助和提供的文件，膜一发" class="headerlink" title="最后感谢lyd大佬的帮助和提供的文件，膜一发:-)"></a>最后感谢lyd大佬的帮助和提供的文件，膜一发:-)</h3><h2 id="Version-2-0"><a href="#Version-2-0" class="headerlink" title="Version 2.0"></a>Version 2.0</h2><blockquote><p>2018.8.18</p></blockquote><p>emmm之前帮学弟装了linux后他们也遇到了如何在linux友好的使用IDA的问题，然后我发现可以直接用<code>wine</code>打开windows下的IDA。。。在deepin里找到你windows下ida所在的文件夹，<code>wine idaexe</code>或<code>wine ida64.exe</code>即可。</p><p>当然，如果装了zsh的话可以直接在<code>.zshrc</code>文件中添加</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alias ida=&apos;wine /media/l1b0/Windows/Program\ Files\ \(x86\)/IDA/ida.exe&apos;</span><br><span class="line">alias ida64=&apos;wine /media/l1b0/Windows/Program\ Files\ \(x86\)/IDA/ida64.exe&apos;</span><br></pre></td></tr></table></figure><p>之后就直接<code>ida filename</code>即可</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Version-1-0&quot;&gt;&lt;a href=&quot;#Version-1-0&quot; class=&quot;headerlink&quot; title=&quot;Version 1.0&quot;&gt;&lt;/a&gt;Version 1.0&lt;/h2&gt;&lt;h3 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00 前言&lt;/h3&gt;&lt;p&gt;最近在熟悉deepin系统，想着把逆向的一些软件也迁移过去，但像ida，Ollydbg这些工具一般都是在windows下使用，所以会遇到一些麻烦，最好的解决方法其实就是在deepin上装个虚拟机（window_xp的52破解版）hhh，里面啥都有。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="https://l1b0.fun/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Linux-IDA" scheme="https://l1b0.fun/tags/Linux-IDA/"/>
     
   </entry>
   
