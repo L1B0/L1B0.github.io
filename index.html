@@ -157,6 +157,115 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Reversing-Kr-WindowsKernel-Writeup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/bf4b8c81/">Reversing-Kr WindowsKernel Writeup</a>
+    </h1>
+  
+
+        
+        
+<a href="/bf4b8c81/" class="archive-article-date">
+  	<time datetime="2019-12-03T04:16:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Reversing-Kr-WindowsKernel-Writeup"><a href="#Reversing-Kr-WindowsKernel-Writeup" class="headerlink" title="Reversing-Kr WindowsKernel Writeup"></a>Reversing-Kr WindowsKernel Writeup</h1><blockquote>
+<p><a href="https://github.com/L1B0/CTF/tree/master/Reversing-Kr/WindowsKernel" target="_blank" rel="noopener">题目及脚本</a></p>
+<p>做完这题到2k分了:-)</p>
+</blockquote>
+<p><img src="https://s2.ax1x.com/2019/12/03/QKcEHs.png" alt="QKcEHs.png"></p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>题目给了一个exe和一个sys驱动，均为32位。注意程序应放到<strong>x86系统</strong>运行，不然驱动无法加载成功。</p>
+<p>先运行一下，当驱动加载成功后如下图。要进行输入需先点击<code>Enable</code>按钮。</p>
+<p><img src="https://s2.ax1x.com/2019/12/03/QKcYU1.png" alt="QKcYU1.png"></p>
+<p>然后进行输入，按键时会明显发现有一定的延迟，结合提示<code>keyboard</code>可以猜测驱动获取了键盘输入进行处理。</p>
+<p><img src="https://s2.ax1x.com/2019/12/03/QKcLGV.png" alt="QKcLGV.png"></p>
+        
+          <a class="article-more-a" href="/bf4b8c81/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reversing-Kr</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Windbg</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/bf4b8c81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-Reversing-Kr-CRC1-Writeup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1106,115 +1215,6 @@
 
 
   
-    <article id="post-hackeme-inndy-tw-all-reverse-Writeup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/a5a95622/">hackeme.inndy.tw-all-reverse-Writeup</a>
-    </h1>
-  
-
-        
-        
-<a href="/a5a95622/" class="archive-article-date">
-  	<time datetime="2018-10-08T07:32:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这里记录一下<a href="https://hackme.inndy.tw" target="_blank" rel="noopener">hackme.inndy.tw</a>至今(2018.10.8)所有reverse类题目的解题思路，遵循站主的规则不放flag。<br>所有题目及脚本都在<a href="https://github.com/L1B0/CTF/tree/master/hackme.inndy.tw/re" target="_blank" rel="noopener">我的github上</a>。</p>
-<p><img src="http://tva1.sinaimg.cn/large/007X8olVly1g8qodhe7khj30vn0gzaca.jpg" alt="jietu"></p>
-        
-          <a class="article-more-a" href="/a5a95622/#more">more >></a>
-        
-      
-      
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Ollydbg</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hackme-inndy-tw</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Z3</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Upx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/a5a95622/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1339,23 +1339,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Ollydbg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Pwnable-Kr</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Pwn</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Reversing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reversing-Kr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Ollydbg</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1367,15 +1359,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Reversing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Reversing-Kr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Windbg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Ida-debug</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Patch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Jadx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1387,11 +1387,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hackme-inndy-tw</a>
+                <a href="javascript:void(0)" class="js-tag color3">Z3</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Z3</a>
+                <a href="javascript:void(0)" class="js-tag color1">hackme-inndy-tw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1407,6 +1407,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Zip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">upx</a>
               </li>
              
@@ -1415,7 +1419,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Zip</a>
+                <a href="javascript:void(0)" class="js-tag color5">Jadx</a>
               </li>
             
             <div class="clearfix"></div>
