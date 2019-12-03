@@ -157,6 +157,113 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Reversing-Kr-Flash-Encrypt-Writeup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/86b8c49b/">Reversing-Kr Flash-Encrypt Writeup</a>
+    </h1>
+  
+
+        
+        
+<a href="/86b8c49b/" class="archive-article-date">
+  	<time datetime="2019-12-03T07:17:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Reversing-Kr-Flash-Encrypt-Writeup"><a href="#Reversing-Kr-Flash-Encrypt-Writeup" class="headerlink" title="Reversing-Kr Flash-Encrypt Writeup"></a>Reversing-Kr Flash-Encrypt Writeup</h1><blockquote>
+<p><a href="https://github.com/L1B0/CTF/tree/master/Reversing-Kr/FlashEncrypt" target="_blank" rel="noopener">题目及脚本</a></p>
+</blockquote>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>题目是一个swf(shock wave flash)类型的文件，于是去网上找了个<a href="https://www.52pojie.cn/thread-584213-1-1.html" target="_blank" rel="noopener">反编译flash的程序JPEXS</a>。</p>
+<p>不得不说，真的好用:-)</p>
+<p>用<strong>JPEXS</strong>打开swf文件，在设置一栏勾选<strong>自动反混淆</strong>，不然看到的代码会怀疑人生。</p>
+<p>可以看到有6个button，每个button都有相应的点击事件。</p>
+<p><img src="https://s2.ax1x.com/2019/12/03/QMVdW4.png" alt="QMVdW4.png"></p>
+        
+          <a class="article-more-a" href="/86b8c49b/#more">more >></a>
+        
+      
+      
+
+
+  <div class="declare" hidden="hidden"></div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Reversing</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reversing-Kr</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Flash</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/86b8c49b/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
     <article id="post-Reversing-Kr-WindowsKernel-Writeup" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1114,107 +1221,6 @@
 
 
   
-    <article id="post-2019看雪CTF-Q1-第六题-Repwn详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/4032/">2019看雪CTF-Q1-第六题 Repwn详解</a>
-    </h1>
-  
-
-        
-        
-<a href="/4032/" class="archive-article-date">
-  	<time datetime="2019-03-26T12:34:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>这题花了我今天所有的空闲时间（大概五个多小时），所以有必要记录一下自己的解题过程:-)</p>
-<p><a href="https://github.com/L1B0/CTF/tree/master/2019%E7%9C%8B%E9%9B%AACTF-Q1/Repwn" target="_blank" rel="noopener">题目和脚本</a></p>
-</blockquote>
-<h2 id="0x01-第一关（re-pwn-）"><a href="#0x01-第一关（re-pwn-）" class="headerlink" title="0x01 第一关（re+pwn???）"></a>0x01 第一关（re+pwn???）</h2><p>第一个关键函数sub_4014C0伪代码如下</p>
-<p><img src="https://s2.ax1x.com/2019/03/14/AATodg.md.png" alt="1"></p>
-        
-          <a class="article-more-a" href="/4032/#more">more >></a>
-        
-      
-      
-
-
-  <div class="declare" hidden="hidden"></div>
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DES</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/4032/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1335,11 +1341,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Linux-IDA</a>
+                <a href="javascript:void(0)" class="js-tag color3">Ollydbg</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Ollydbg</a>
+                <a href="javascript:void(0)" class="js-tag color5">Linux-IDA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1351,14 +1357,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">HackingTeam</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RCS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Reversing</a>
               </li>
              
@@ -1367,7 +1365,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Flash</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">HackingTeam</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RCS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Windbg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Jadx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Z3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1379,23 +1397,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Crypto</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Z3</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hackme-inndy-tw</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Upx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Crypto</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1416,10 +1430,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">fix-f5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Jadx</a>
               </li>
             
             <div class="clearfix"></div>

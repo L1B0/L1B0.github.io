@@ -6,15 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://l1b0.fun">
-  <title>Archives: 2018 | l1b0&#39;s blog</title>
+  <title>Reversing-Kr Flash-Encrypt Writeup | l1b0&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="l1b0&#39;s blog">
-<meta property="og:url" content="https://l1b0.fun/archives/2018/page/2/index.html">
+  <meta name="description" content="Reversing-Kr Flash-Encrypt Writeup 题目及脚本  解题思路题目是一个swf(shock wave flash)类型的文件，于是去网上找了个反编译flash的程序JPEXS。 不得不说，真的好用:-) 用JPEXS打开swf文件，在设置一栏勾选自动反混淆，不然看到的代码会怀疑人生。 可以看到有6个button，每个button都有相应的点击事件。">
+<meta name="keywords" content="Reversing,Reversing-Kr,Flash">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Reversing-Kr Flash-Encrypt Writeup">
+<meta property="og:url" content="https://l1b0.fun/86b8c49b/index.html">
 <meta property="og:site_name" content="l1b0&#39;s blog">
+<meta property="og:description" content="Reversing-Kr Flash-Encrypt Writeup 题目及脚本  解题思路题目是一个swf(shock wave flash)类型的文件，于是去网上找了个反编译flash的程序JPEXS。 不得不说，真的好用:-) 用JPEXS打开swf文件，在设置一栏勾选自动反混淆，不然看到的代码会怀疑人生。 可以看到有6个button，每个button都有相应的点击事件。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QMVdW4.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QMVIOI.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QMV70P.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QMVqk8.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QMVHTf.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QMVTmt.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/12/03/QMZltO.png">
+<meta property="og:updated_time" content="2019-12-03T07:18:56.638Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="l1b0&#39;s blog">
+<meta name="twitter:title" content="Reversing-Kr Flash-Encrypt Writeup">
+<meta name="twitter:description" content="Reversing-Kr Flash-Encrypt Writeup 题目及脚本  解题思路题目是一个swf(shock wave flash)类型的文件，于是去网上找了个反编译flash的程序JPEXS。 不得不说，真的好用:-) 用JPEXS打开swf文件，在设置一栏勾选自动反混淆，不然看到的代码会怀疑人生。 可以看到有6个button，每个button都有相应的点击事件。">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/12/03/QMVdW4.png">
   
     <link rel="alternative" href="/atom.xml" title="l1b0&#39;s blog" type="application/atom+xml">
   
@@ -155,53 +168,93 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Reversing-Kr-Flash-Encrypt-Writeup" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Reversing-Kr Flash-Encrypt Writeup
+    </h1>
+  
+
+        
+                <!-- 不蒜子统计 -->        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次        </span>
+<a href="/86b8c49b/" class="archive-article-date">
+  	<time datetime="2019-12-03T07:17:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Reversing-Kr-Flash-Encrypt-Writeup"><a href="#Reversing-Kr-Flash-Encrypt-Writeup" class="headerlink" title="Reversing-Kr Flash-Encrypt Writeup"></a>Reversing-Kr Flash-Encrypt Writeup</h1><blockquote>
+<p><a href="https://github.com/L1B0/CTF/tree/master/Reversing-Kr/FlashEncrypt" target="_blank" rel="noopener">题目及脚本</a></p>
+</blockquote>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>题目是一个swf(shock wave flash)类型的文件，于是去网上找了个<a href="https://www.52pojie.cn/thread-584213-1-1.html" target="_blank" rel="noopener">反编译flash的程序JPEXS</a>。</p>
+<p>不得不说，真的好用:-)</p>
+<p>用<strong>JPEXS</strong>打开swf文件，在设置一栏勾选<strong>自动反混淆</strong>，不然看到的代码会怀疑人生。</p>
+<p>可以看到有6个button，每个button都有相应的点击事件。</p>
+<p><img src="https://s2.ax1x.com/2019/12/03/QMVdW4.png" alt="QMVdW4.png"></p>
+<a id="more"></a>
+
+<p><img src="https://s2.ax1x.com/2019/12/03/QMVIOI.png" alt="QMVIOI.png"></p>
+<p><img src="https://s2.ax1x.com/2019/12/03/QMV70P.png" alt="QMV70P.png"></p>
+<p><img src="https://s2.ax1x.com/2019/12/03/QMVqk8.png" alt="QMVqk8.png"></p>
+<p><img src="https://s2.ax1x.com/2019/12/03/QMVHTf.png" alt="QMVHTf.png"></p>
+<p><img src="https://s2.ax1x.com/2019/12/03/QMVTmt.png" alt="QMVTmt.png"></p>
+<p>逻辑其实很简单，<strong>spw</strong>即文本框的输入，相等就跳转到另一个frame进行后续的操作。</p>
+<p>在文件一栏<strong>另存为exe</strong>，一个一个输入即可得到最终的key。</p>
+<p>结果如下</p>
+<p><img src="https://s2.ax1x.com/2019/12/03/QMZltO.png" alt="QMZltO.png"></p>
+
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/27428/" class="archive-article-date">
-  	<time datetime="2018-07-30T12:16:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/27428/">Pwnable-Kr-Toddlers-Bottle</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
+
+  <div class="declare">
+    <strong>本文作者：</strong>
+    
+      l1b0
+    
+    <br>
+    <strong>本文链接：</strong>
+    https://l1b0.fun/86b8c49b/
+    <br>
+    <strong>版权声明：</strong>
+    本作品采用
+    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    进行许可。转载请注明出处！
+    
+  </div>
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Pwnable-Kr</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Reversing</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Pwn</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reversing-Kr</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Flash</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -214,273 +267,134 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://l1b0.fun/86b8c49b/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/7003/" class="archive-article-date">
-  	<time datetime="2018-07-30T12:14:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/bf4b8c81/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Reversing-Kr WindowsKernel Writeup</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/7003/">hackme-inndy-misc-slow</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hackme-inndy-tw</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Misc</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">时序攻击</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Reversing-Kr-Flash-Encrypt-Writeup"><span class="toc-number">1.</span> <span class="toc-text">Reversing-Kr Flash-Encrypt Writeup</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-number">1.1.</span> <span class="toc-text">解题思路</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/26421/" class="archive-article-date">
-  	<time datetime="2018-07-29T12:12:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/26421/">Whitzard-CTF-RSA</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Crypto</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RSA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/CTF//" class="article-tag-list-link color4">CTF</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/64769/" class="archive-article-date">
-  	<time datetime="2018-07-28T12:10:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/64769/">InForSec夏令营-二进制训练营总结</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reverse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/保研之路//" class="article-tag-list-link color5">保研之路</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/19088/" class="archive-article-date">
-  	<time datetime="2018-07-06T12:08:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/19088/">Linux-IDA-安装-带F5功能</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Linux-IDA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/工具//" class="article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/9194/" class="archive-article-date">
-  	<time datetime="2018-07-03T11:51:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/9194/">Hello-World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/l1b0-s-blog//" class="article-tag-list-link color2">l1b0's blog</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
+  
+  <article class="article article-type-post " itemprop="blogPost">
+  <!-- 《utteranc评论：基于github issue的评论系统 --> 
+   
+      <section id="comments" class="comments"> 
+      <style>
+        .utterances{max-width: 85%;}
+      </style> 
+      <script src="https://utteranc.es/client.js"
+                repo="L1B0/L1B0.github.io"
+                issue-term="title"
+                theme="github-light"
+                crossorigin="anonymous"
+                async> 
+      </script> 
+      </section> 
+   
+  </article>
+  <!-- utteranc评论》 -->
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
+  
 
           </div>
         </div>
@@ -516,8 +430,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
