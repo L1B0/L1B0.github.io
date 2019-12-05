@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/05/Q8Gj9e.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/05/Q8Jnun.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/12/05/Q8YFq1.png">
-<meta property="og:updated_time" content="2019-12-05T07:51:15.665Z">
+<meta property="og:updated_time" content="2019-12-05T07:54:00.233Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Reversing-Kr AutoHotKey1 Writeup">
 <meta name="twitter:description" content="题目及脚本  解题思路首先看下README，提示最终flag由两部分DecryptKey和EXE’s Key的逆md5值组成。  -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- AuthKey = un_md5(DecryptKey) + “ “">
@@ -216,6 +216,8 @@
 </blockquote>
 <p>用PEID看下程序，显示有UPX壳，可以通过<code>upx -d</code>或者<strong>ESP定律</strong>脱壳。</p>
 <p><img src="https://s2.ax1x.com/2019/12/05/Q8mAEj.png" alt="Q8mAEj.png"></p>
+<a id="more"></a>
+
 <p>接下来用ida分析脱壳后的程序，打开后发现程序很大，无从下手。</p>
 <p>运行一下脱壳后的程序提示<code>EXE corrupted</code>。</p>
 <p><img src="https://s2.ax1x.com/2019/12/05/Q8nTmD.png" alt="Q8nTmD.png"></p>
